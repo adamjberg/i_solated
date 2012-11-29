@@ -23,7 +23,7 @@ package models {
 		private var branchPointTwo:BranchPoint = new BranchPoint( 3905, 779, [ new Point( 3927, 771 ), new Point( 3940, 766 ), new Point( 3957, 758 ), new Point( 3973, 745 ), new Point( 4014, 712 ), new Point( 4041, 673 ), new Point( 4070, 639 ), new Point( 4108, 607 ), new Point( 4128, 588 ), 
 			new Point( 4160, 566 ), new Point( 4192, 544 ), new Point( 4228, 522 ), new Point( 4261, 499 ), new Point( 4290, 476 ), new Point( 4317, 454 ), new Point( 4346, 436 ), new Point( 4376, 423 ), new Point( 4410, 412 ), new Point( 4428, 405 ), new Point( 4461, 405 ), new Point( 4486, 397 ),
 			new Point( 4519, 396 ), new Point( 4549, 400 ), new Point( 4571, 408 ), new Point( 4585, 415 ), new Point( 4609, 423 ), new Point( 4626, 431 ), new Point( 4667, 462 ), ], Directions.LEFT, Directions.UP );
-		
+
 		private const pointsOnTree:Array =
 		[
 			new Point( 1679, 416 ), new Point( 1722, 396 ), new Point( 1743, 387 ), new Point( 1784, 372 ), new Point( 1834, 355 ), new Point( 1899, 332 ), new Point( 1951, 314 ), new Point( 2022, 286 ),	new JumpPoint( 2151, 245, PlayerAnimations.JUMP_DOWN_LARGE ), new Point( 2236, 450 )		
@@ -66,15 +66,15 @@ package models {
 			
 			this.soundRects = 
 			[ 
-				new SoundRectangle( 2561, 30, 500, 600, new Rectangle( 2000, 30, 2000, 600 ), Sounds.LOG_BREAK ),
-				new SoundRectangle( 2500, 0, 500, 800, new Rectangle( 900, 0, 3700, 800 ), Sounds.WATER_FALL ), 
-				new SoundRectangle( 3361, 0, 3000, 800, new Rectangle( 3000, 0, 4000, 800 ), Sounds.RIVER ),
-				new SoundRectangle( 4000, 0, 200, 800, new Rectangle( 3300, 0, 1200, 800 ), Sounds.GATE_LIFTING ),
-				new SoundRectangle( 4700, 0, 200, 800, new Rectangle( 4300, 0, 1400, 800 ), Sounds.WATER_FALL2 ), 
-				new SoundRectangle( 2750, 0, 50, 800, new Rectangle( 2500, 0, 500, 800 ), Sounds.DRIPPING ),
-				new SoundRectangle( 3800, 0, 200, 800, new Rectangle( 3000, 0, 1800, 800 ), Sounds.WATER_WHEEL )
+				new SoundRectangle( 2161, 30, 500, 600, new Rectangle( 1600, 30, 2000, 600 ), Sounds.LOG_BREAK ),
+				new SoundRectangle( 2100, 0, 500, 800, new Rectangle( 500, 0, 3700, 800 ), Sounds.WATER_FALL ), 
+				new SoundRectangle( 2961, 0, 3000, 800, new Rectangle( 2600, 0, 4000, 800 ), Sounds.RIVER ),
+				new SoundRectangle( 3600, 0, 200, 800, new Rectangle( 2900, 0, 1200, 800 ), Sounds.GATE_LIFTING ),
+				new SoundRectangle( 4300, 0, 200, 800, new Rectangle( 3900, 0, 1400, 800 ), Sounds.WATER_FALL2 ), 
+				new SoundRectangle( 2350, 0, 50, 800, new Rectangle( 2100, 0, 500, 800 ), Sounds.DRIPPING ),
+				new SoundRectangle( 3300, 0, 200, 800, new Rectangle( 2600, 0, 1800, 800 ), Sounds.WATER_WHEEL )
 			];
-			this.soundPoints = [ new SoundPoint( 2630, 0, Sounds.WATER_FALL, 25, 0, SoundPoint.STOP ), new SoundPoint( 2700, 0, Sounds.RIVER, 25, 0, SoundPoint.STOP ) ];
+			this.soundPoints = [ new SoundPoint( 2230, 0, Sounds.WATER_FALL, 25, 0, SoundPoint.STOP ), new SoundPoint( 2300, 0, Sounds.RIVER, 25, 0, SoundPoint.STOP ) ];
 			this.panPoints = [ new PanPoint( 1091, 351, 1400, 100, 175, true, 15, false ), new PanPoint( 1410, 450, 1710, 300, 0, true, 50 ), new PanPoint( 2730, 456, 3000, 0, 0, true ) ];
 			GameState.surface = Surfaces.GRASS;
 		}
