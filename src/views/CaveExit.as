@@ -119,11 +119,13 @@ package views {
 
 		private function _addListeners():void
 		{
+			this.player.onPulse.add( this.controller.pulse );
 			player.onAnimationComplete.add( this.controller.playerController.changeAnimation );
 		}
 
 		private function _removeListeners():void
 		{
+			this.player.onPulse.remove( this.controller.pulse );
 			player.onAnimationComplete.remove( this.controller.playerController.changeAnimation );
 		}
 
