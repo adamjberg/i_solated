@@ -22,6 +22,7 @@ package views {
 	 */
 	public class PostForegroundThree extends PostForeground 
 	{
+		public var onBucketButtonClicked:Signal = new Signal();
 		public var onLiftControlsClicked:Signal = new Signal();
 		public var onLeftButtonClicked:Signal = new Signal();
 		public var onRightButtonClicked:Signal = new Signal();
@@ -126,8 +127,10 @@ package views {
 			disableLiftControls();
 			liftControls.addEventListener( MouseEvent.MOUSE_DOWN, _liftControlsClicked );
 			
-			bucketButton = foreground.getChildByName( BUCKET_BUTTON ) as MovieClip;
-			bucketButton.stop();
+			this.bucketButton = foreground.getChildByName( BUCKET_BUTTON ) as MovieClip;
+			this.bucketButton.stop();
+			this.bucketButton.buttonMode = true;
+			this.bucketButton.addEventListener( MouseEvent.MOUSE_DOWN, this._onBucketButtonClicked );
 			
 			lift = foreground.getChildByName( LIFT ) as Sprite;
 			liftSupport = foreground.getChildByName( LIFT_SUPPORT ) as Sprite;
@@ -151,6 +154,7 @@ package views {
 		override public function destroy():void
 		{
 			super.destroy();
+			onBucketButtonClicked.removeAll();
 			onLiftControlsClicked.removeAll();
 			onLeftButtonClicked.removeAll();
 			onRightButtonClicked.removeAll();
@@ -163,6 +167,7 @@ package views {
 			onLiftClicked.removeAll();
 			onValveClicked.removeAll();
 			
+			onBucketButtonClicked = null;
 			onLiftControlsClicked = null;
 			onLeftButtonClicked = null;
 			onRightButtonClicked = null;
@@ -376,6 +381,13 @@ package views {
 			e.stopImmediatePropagation();
 			e.stopPropagation();
 			this.onLiftControlsClicked.dispatch();
+		}
+		
+		private function _onBucketButtonClicked( e:MouseEvent ):void
+		{
+			e.stopImmediatePropagation();
+			e.stopPropagation();
+			this.onBucketButtonClicked.dispatch(); 
 		}
 		
 		public function buttonPressed( name:String ):void

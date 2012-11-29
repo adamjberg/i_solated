@@ -111,6 +111,7 @@ package views {
 			this.preForeground.onWaterWeightComplete.addOnce( this._waterWeightComplete );
 			this.preForeground.onBucketEmptyComplete.add( this.bucketConveyorController.bucketEmptied );
 			
+			this.postForeground.onBucketButtonClicked.add( this._bucketButtonClicked );
 			this.postForeground.onLiftClicked.add( this._attemptJumpUpElevator );
 			this.postForeground.onElevatorPosChanged.add( this._movePlayerWithElevator );
 			this.postForeground.onElevatorMoveComplete.add( this._elevatorMovementComplete );
