@@ -75,14 +75,14 @@ package views {
 			{
 				GameState.surface = Surfaces.CLIFF;
 			}
-			/*if( this.controller.playerModel.relativeXPos > 0/*5050 && this.controller.playerModel.relativeXPos < 6200 )
+			if( this.controller.playerModel.relativeXPos > 5040 && this.controller.playerModel.relativeXPos < 6200 )
 			{
 				this.controller.playerModel.allowCityGaze = true;
 			}
 			else
 			{
 				this.controller.playerModel.allowCityGaze = false;
-			}*/
+			}
 			controller.update( dt );
 		}
 
