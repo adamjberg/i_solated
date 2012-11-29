@@ -69,7 +69,7 @@ package views {
 			this.controller = controller;
 			player = new Player( this.controller.playerModel );
 			
-			pulse = new Pulse( this.controller.pulseModel, this.controller.playerModel );
+			pulse = new Pulse( this.controller.pulseModel );
 			
 			caveExit = new CAVE_EXIT();
 			rain1 = new Rain( caveExit.removeChild( caveExit.getChildByName( 'rain1' ) ) as MovieClip );

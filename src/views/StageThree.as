@@ -92,7 +92,7 @@ package views {
 			
 			addChild( foreground );
 			
-			pulse = new Pulse( this.controller.pulseModel, this.controller.playerModel );
+			pulse = new Pulse( this.controller.pulseModel );
 			addChild( pulse );
 			
 			this.controller.cameraController.rightWall = FIRST_FLOOR_RIGHT_WALL;

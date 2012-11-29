@@ -1,5 +1,4 @@
 package views {
-	import models.PlayerModel;
 	import models.PulseModel;
 
 	import flash.display.Sprite;
@@ -18,15 +17,13 @@ package views {
 		private static const PULSE_WIDTH:int = 5;
 		
 		private var model:PulseModel;
-		private var playerModel:PlayerModel;
 		
 		private var lastUpdateTime:Number = 0;
 		
-		public function Pulse( pulseModel:PulseModel, playerModel:PlayerModel = null )
+		public function Pulse( pulseModel:PulseModel )
 		{
 			super();
 			this.model = pulseModel;
-			this.playerModel = playerModel;
 			this.model.onComplete.add( _remove );
 			this.model.onPlay.add( _add );
 			this.model.onRadiusChanged.add( _redraw );
@@ -59,18 +56,8 @@ package views {
 			
 			lastUpdateTime = getTimer();
 						
-			var centerX:Number;
-			var centerY:Number;
-			if( playerModel == null )
-			{
-				centerX = model.centerX;
-				centerY = model.centerY;
-			}
-			else
-			{
-				centerX = playerModel.xPos;
-				centerY = playerModel.yPos - 150;
-			}	
+			var centerX:Number = model.centerX;
+			var centerY:Number = model.centerY;
 			
 			this.graphics.clear();
 			this.graphics.lineStyle( PULSE_WIDTH, 0x444444 );

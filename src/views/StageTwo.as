@@ -171,7 +171,7 @@ package views {
 
 			this.controller.playerController.onPlayerLanded.add( this.player.endJump );
 				
-			pulse = new Pulse( this.controller.pulseModel, this.controller.playerModel );			
+			pulse = new Pulse( this.controller.pulseModel );			
 			
 			addChild( foreground );
 			addChild( player );	

@@ -35,7 +35,7 @@ package views {
 		private function _redraw( radius:Number ):void
 		{
 			var centerX:Number = this.model.centerX;
-			var centerY:Number = this.model.centerY// - 150;
+			var centerY:Number = this.model.centerY;
 			
 			this.graphics.clear();
 			this.graphics.beginFill( 0 );

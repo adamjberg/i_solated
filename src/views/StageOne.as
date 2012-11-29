@@ -127,7 +127,7 @@ package views {
 			foreground = new Foreground( preForeground, postForeground, this.controller.foregroundModel );
 			player = new Player( this.controller.playerModel );
 						
-			pulse = new Pulse( this.controller.pulseController.pulseModel, this.controller.playerModel );
+			pulse = new Pulse( this.controller.pulseController.pulseModel );
 		
 			addChild( foreground );
 			addChild( player );
