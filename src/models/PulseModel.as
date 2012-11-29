@@ -13,8 +13,10 @@ package models {
 		public var onComplete:Signal = new Signal();
 		public var onRadiusChanged:Signal = new Signal();
 		
-		public var centerX:int = 0;
-		public var centerY:int = 0;
+		public var maskCenterX:Number = 0;
+		public var maskCenterY:Number = 0;
+		public var centerX:Number = 0;
+		public var centerY:Number = 0;
 		public var playing:Boolean = false;
 				
 		private var _radius:Number = 0;

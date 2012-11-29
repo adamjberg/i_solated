@@ -85,7 +85,7 @@ package views {
 		private function _loopUntilPulse():void
 		{
 			_continueAnimation();
-			this.controller.pulseController.pulse( 40, 350, 1000 );
+			this.controller.pulseController.pulse( 40, 40, 350, 350, 1000 );
 			this.postForeground.keepMask();
 			this.controller.pulseModel.onComplete.addOnce( this.postForeground.removeMask );
 			return;

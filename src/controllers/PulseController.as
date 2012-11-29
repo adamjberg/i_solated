@@ -25,7 +25,7 @@ package controllers {
 			this.pulseModel = null;
 		}
 		
-		public function pulse( xPos:Number, yPos:Number, maxSize:Number ):void
+		public function pulse( realPlayerXPos:Number, realPlayerYPos:Number, playerRelXPos:Number, playerRelYPos:Number, maxSize:Number ):void
 		{
 			if( radTween )
 			{
@@ -33,8 +33,10 @@ package controllers {
 				radTween = null;
 			}
 			
-			pulseModel.centerX = xPos;
-			pulseModel.centerY = yPos;
+			pulseModel.maskCenterX = playerRelXPos;
+			pulseModel.maskCenterY = playerRelYPos;
+			pulseModel.centerX = realPlayerXPos;
+			pulseModel.centerY = realPlayerYPos;
 			pulseModel.radius = PulseModel.START_RADIUS;
 			pulseModel.playing = true;
 			var time:Number = ( maxSize + PulseModel.SPACE_BETW ) * PulseModel.SPEED;

@@ -153,7 +153,7 @@ package controllers {
 		
 		public function pulse():void
 		{
-			this.pulseController.pulse( this.playerModel.relativeXPos, this.playerModel.relativeYPos, Math.max( Math.abs( this.playerModel.xPos - this.stage.stageWidth ), this.playerModel.xPos ) );
+			this.pulseController.pulse( this.playerModel.xPos, this.playerModel.yPos - 150, this.playerModel.relativeXPos, this.playerModel.relativeYPos - 150, Math.max( Math.abs( this.playerModel.xPos - this.stage.stageWidth ), this.playerModel.xPos ) );
 		}
 		
 		public function disableBackwardsMovement():void
