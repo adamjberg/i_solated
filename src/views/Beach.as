@@ -86,6 +86,8 @@ package views {
 			
 			this.controller.playerModel.speedMultiplier = 0.15;
 			this.controller.playerModel.allowWalkingSound = false;
+			// This is sort of a hack because the playerModel isn't actually being used to change animations
+			this.controller.playerModel.animation = PlayerAnimations.WALKING;
 			this.controller.disableBackwardsMovement();
 			this.controller.onAcceptedClick.add( _takeStep );
 			this.finalWalk = new FinalWalk( this.controller.playerModel );

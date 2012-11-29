@@ -50,6 +50,7 @@ package views {
 		private function _onComplete():void
 		{
 			Sounds.transitionOutTimeLapse( 0, 0 );
+			this.controller.destroy();
 			onComplete.dispatch();
 		}
 	}

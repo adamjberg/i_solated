@@ -193,11 +193,13 @@ package controllers {
 		
 		private function keyDown( e:KeyboardEvent ):void
 		{
+			trace( 'key down' );
 			var keyCode:uint = e.keyCode;
 			
 			// REAL KEYBOARD CONTROLS
 			if( keyCode == Keyboard.SPACE && playerModel.allowPulse )
 			{
+				trace( 'on pulse' );
 				onPulse.dispatch();
 				playerController.pulse();
 			}
