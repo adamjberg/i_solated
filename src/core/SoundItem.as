@@ -67,7 +67,6 @@ package core {
 		 * @return void
 		 */
 		public function play($startTime:Number = 0, $loops:int = 0, $volume:Number = 1, $resumeTween:Boolean = false):void		{
-			return;
 			if (!paused) return;
 			baseVolume = $volume;
 			savedVolume = volume;
