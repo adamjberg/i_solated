@@ -230,7 +230,7 @@ package models {
 		{
 			return animation == PlayerAnimations.NORMAL_STAND
 				|| animation == PlayerAnimations.CARRY_ROCK_STAND || animation == PlayerAnimations.CARRY_COG_STAND
-				|| animation == PlayerAnimations.CARRY_VALVE_STAND;
+				|| animation == PlayerAnimations.CARRY_VALVE_STAND || animation == PlayerAnimations.CITY_GAZE;
 		}
 		
 		public function destroy():void
