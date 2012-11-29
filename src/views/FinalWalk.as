@@ -11,6 +11,8 @@ package views {
 	{
 		private static const FPS:Number = 10;
 		
+		private static const FOOTSTEP_VOL:Number = 0.35;
+		
 		private static const START_LOOP:Number = 23;
 		
 		[Embed(source="/../assets/ZOOOP.swf", symbol="FinalWalk")]
@@ -29,7 +31,7 @@ package views {
 		
 		override public function play( playTransition:Boolean = false ):void
 		{
-			SoundManager.getInstance().playSound( Sounds.SAND_FOOTSTEPS, 0.5 );
+			SoundManager.getInstance().playSound( Sounds.SAND_FOOTSTEPS, FOOTSTEP_VOL );
 			this.currentFrame = 0;
 			this.setAnimationTimes( [ START_LOOP ], [ START_LOOP/ FPS ], _loopEnd );
 		}
@@ -46,7 +48,7 @@ package views {
 		public function loopWalk():void
 		{
 			SoundManager.getInstance().stopSound( Sounds.SAND_FOOTSTEPS );
-			SoundManager.getInstance().playSound( Sounds.SAND_FOOTSTEPS );
+			SoundManager.getInstance().playSound( Sounds.SAND_FOOTSTEPS, FOOTSTEP_VOL );
 			this.stop();
 			this.currentFrame = 1;
 			this.setAnimationTimes( [ START_LOOP ], [ START_LOOP/ FPS ], loopWalk );
