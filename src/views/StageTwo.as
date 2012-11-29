@@ -570,7 +570,7 @@ package views {
 		
 		private function _checkForBridgeEnable():void
 		{
-			const distanceFrom:Number = 200;
+			const distanceFrom:Number = 800;
 			const controlBoxPos:Point = new Point( 4925, 780 );
 			var playerPos:Point = new Point( controller.playerModel.relativeXPos, controller.playerModel.relativeYPos );
 			if( Arrays.contains( this.controller.foregroundModel.taggedObjects, [ FrontPostForegroundTwo.BRIDGE ] ) && allowBridgeEnableCheck )
