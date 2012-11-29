@@ -414,7 +414,7 @@ package views {
 		
 		private function _checkForRevealRoom():void
 		{
-			if( this.controller.playerModel.relativeXPos > 1000 && !revealMusicTriggered )
+			if( this.controller.playerModel.relativeXPos > 1100 && !revealMusicTriggered )
 			{
 				revealMusicTriggered = true;
 				TweenLite.delayedCall( 1.5, function():void
