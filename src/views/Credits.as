@@ -38,7 +38,6 @@ package views {
 		
 		private function _start():void
 		{
-			trace( numFrames );
 			this.setAnimationTimes( [ numFrames - 10 ], [ ( numFrames - 10 ) / FPS ], _startBGM );
 		}
 		

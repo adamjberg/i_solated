@@ -29,7 +29,6 @@ package controllers {
 		
 		public function checkForSound( foregroundX:Number, playerYPos:Number ):void
 		{
-			trace( 'foreground x: ' + foregroundX );
 			var xDistMultiplier:Number;
 			var yDistMultiplier:Number;
 			var si:SoundItem;
@@ -94,8 +93,6 @@ package controllers {
 				{
 					yDistMultiplier = 0;
 				}
-				if( soundRect.soundName == Sounds.BUCKET_MOVEMENT )
-					trace( 'set distance mult for: ' +soundRect.soundName + ' to: ' + xDistMultiplier, yDistMultiplier );
 				soundManager.setDistanceMultiplier( soundRect.soundName, yDistMultiplier * xDistMultiplier );
 				soundManager.panSound( soundRect.soundName, pan );
 			}

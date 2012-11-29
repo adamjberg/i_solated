@@ -131,7 +131,6 @@ package controllers {
 		{
 			playerController.update( dt );
 			cameraController.update( dt );
-			trace( 'player pos: ' + playerModel.relativeXPos );
 			soundController.checkForSound( -foregroundModel.x, playerModel.relativeYPos );
 			if( tutorialController )
 				this.tutorialController.checkForTutorial( playerModel.relativeXPos );
