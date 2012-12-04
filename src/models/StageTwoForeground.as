@@ -41,7 +41,7 @@ package models {
 			new Point( 2958, 442 ), new Point( 2994, 436 ), new Point( 3011, 435 ), new Point( 3028, 445 ), new Point( 3060, 449 ), new Point( 3096, 451 ), new Point( 3151, 452 ), new Point( 3195, 449 ), new Point( 3235, 450 ), new Point( 3269, 455 ), new Point( 3295, 466 ), new Point( 3319, 487 ), 
 			new Point( 3365, 527 ), new Point( 3406, 564 ), new Point( 3450, 603 ), new Point( 3475, 625 ), new Point( 3506, 661 ), new Point( 3542, 701 ), new Point( 3571, 729 ), new Point( 3593, 751 ), new Point( 3613, 760 ), new Point( 3645, 766 ), new Point( 3678, 775 ), new Point( 3719, 775 ), 
 			new Point( 3777, 779 ), new Point( 3845, 778 ),
-			branchPointTwo, new Point( 3983, 777 ), new Point( 4055, 784 ), new Point( 4118, 785 ), new Point( 4148, 786 ), new Point( 4186, 778 ), 
+			branchPointTwo, new Point( 3983, 777 ), new Point( 4055, 784 ), new Point( 4118, 785 ), new Point( 4148, 786 ) 
 		];
 		
 		private const pointsAfterGate:Array =
