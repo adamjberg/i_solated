@@ -62,7 +62,6 @@ package models {
 			super(
 				pointsBeforeTree
 			);			
-			 new StopPoint( 4133, 581, PlayerAnimations.STANDING ), new StopPoint( 4250, 579, PlayerAnimations.STANDING ),
 			
 			this.soundRects = 
 			[ 
