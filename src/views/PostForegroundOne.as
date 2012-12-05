@@ -25,15 +25,5 @@ package views {
 			super( foreground, [ BOULDER, FALLEN_LOG, SHARD ], pulseModel, [ null, null, shardMask ] );
 			this._boulder = foreground.getChildByName( BOULDER ) as Sprite;
 		}
-		
-		public function pulseRock():void
-		{
-			TweenLite.to( this._boulder, 2, { glowFilter: { color: 0xFF0000, alpha: 1, blurX: 4, blurY: 4 }, repeats: -1, onComplete: _unglow } );
-		}
-		
-		private function _unglow():void
-		{
-			TweenLite.to( this._boulder, 2, { glowFilter: { alpha:0, blurX:0, blurY:0 } } );
-		}
 	}
 }

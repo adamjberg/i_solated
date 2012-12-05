@@ -8,25 +8,19 @@ package views {
 	 * @author Adam
 	 */
 	public class Tutorial extends Sprite 
-	{
-		public var onShowHint:Signal = new Signal();
-		
+	{		
 		private static const PULSES_UNTIL_HINT:Number = 3;
 		
 		private var _mouse:TutorialMouse;
 		private var _spaceBar:SpaceBar;
 		private var _pulseCount:int = 0;
+		private var _mouseClickPulse:MouseClickPulse;
 		
 		public function Tutorial() 
 		{
 			_mouse = new TutorialMouse();
 			_spaceBar = new SpaceBar();
 			this.addEventListener( Event.ADDED_TO_STAGE, _addedToStage );
-		}
-		
-		public function destroy():void
-		{
-			this.onShowHint.removeAll();	
 		}
 		
 		private function _addedToStage( e:Event ):void
@@ -58,9 +52,21 @@ package views {
 			}
 			if( this._pulseCount > PULSES_UNTIL_HINT )
 			{
-				onShowHint.dispatch();
+				_showHint();
 			}
 			this.addChild( _mouse );
+		}
+		
+		private function _showHint():void
+		{
+			if( !this._mouseClickPulse )
+			{
+				this._mouseClickPulse = new MouseClickPulse();
+				this._mouseClickPulse.x = this.stage.stageWidth * 0.8;
+				this._mouseClickPulse.y = this.stage.stageHeight * 0.85;
+				this.addChild( this._mouseClickPulse );
+			}
+			this._mouseClickPulse.pulse();
 		}
 	}
 }
