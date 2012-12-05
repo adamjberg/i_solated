@@ -87,7 +87,7 @@ package views {
 		}
 
 		public function load( controller:* ) : void 
-		{
+		{			
 			this.controller = controller;
 			
 			var stageOne:Sprite = new STAGE_ONE();
@@ -257,7 +257,6 @@ package views {
 					return;
 				this.controller.disableMovement();
 				this._tutorial = new Tutorial();
-				this._tutorial.onShowHint.add( postForeground.pulseRock );
 				this.player.onPulse.add( this._tutorial.showTagControls );
 				this.player.onPulseComplete.add( this._tutorial.showPulseControls );
 				this.postForeground.onTag.addOnce( function( name:String ):void
@@ -307,7 +306,6 @@ package views {
 		{
 			if( this._tutorial && this.contains( this._tutorial ) )
 			{
-				this._tutorial.destroy();
 				removeChild( this._tutorial );
 				this._tutorial = null;
 			}
