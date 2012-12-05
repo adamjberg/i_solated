@@ -31,7 +31,7 @@ package views {
 		private const TREES2_SPEED:Number = -0.7;
 		private const TREES3_SPEED:Number = -0.6;
 		
-		private const RIGHT_WALL:Number = -4650;
+		private const RIGHT_WALL:Number = -4600;
 				
 		public var onComplete:Signal = new Signal();
 				
