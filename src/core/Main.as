@@ -1,5 +1,4 @@
 package core {
-	import com.greensock.plugins.FramePlugin;
 	import controllers.LevelController;
 
 	import views.Beach;
@@ -13,7 +12,7 @@ package core {
 	import views.StageThree;
 	import views.StageTwo;
 
-	import com.flashdynamix.utils.SWFProfiler;
+	import com.greensock.plugins.FramePlugin;
 	import com.greensock.plugins.GlowFilterPlugin;
 	import com.greensock.plugins.TweenPlugin;
 
@@ -43,8 +42,7 @@ package core {
 		
 		public function Main()
 		{
-			SWFProfiler.init( this );
-			TweenPlugin.activate([GlowFilterPlugin, FramePlugin]);
+			TweenPlugin.activate([FramePlugin]);
 			Sounds.onInitialSoundsLoaded.addOnce( _showMainMenu );
 			Sounds.init();
 			ScreenManager.getInstance( this );
