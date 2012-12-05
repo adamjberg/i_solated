@@ -32,6 +32,7 @@ package views {
 		public var splashes2:Splashes;
 		public var splashes3:Splashes;
 		public var splashes4:Splashes;
+		private var rockSplashes:Splashes;
 		private var mountains:Sprite;
 		private var hills:Sprite;
 		private var hills2:Sprite;
@@ -82,6 +83,7 @@ package views {
 			splashes2 = new Splashes( caveExit.removeChild( caveExit.getChildByName( 'splashes2' ) ) as MovieClip );
 			splashes3 = new Splashes( caveExit.removeChild( caveExit.getChildByName( 'splashes3' ) ) as MovieClip );
 			splashes4 = new Splashes( caveExit.removeChild( caveExit.getChildByName( 'splashes4' ) ) as MovieClip );
+			rockSplashes = new Splashes( caveExit.removeChild( caveExit.getChildByName( 'rockSplashes' ) ) as MovieClip );
 			
 			caveForeground = new Sprite();
 			caveForeground.addChild( caveExit.removeChild( caveExit.getChildByName( 'caveFore' ) ) as Sprite );
@@ -93,6 +95,7 @@ package views {
 			caveForeground.addChild( splashes2 );
 			caveForeground.addChild( splashes3 );
 			caveForeground.addChild( splashes4 );
+			caveForeground.addChild( rockSplashes );
 			
 			foreground = new Foreground( caveForeground, new Sprite(), this.controller.foregroundModel );
 			
