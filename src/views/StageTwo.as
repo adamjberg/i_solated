@@ -32,9 +32,7 @@ package views {
 		private const TREES3_SPEED:Number = -0.6;
 		
 		private const RIGHT_WALL:Number = -4650;
-		
-		private const X_OFFSET:Number = -2500;
-		
+				
 		public var onComplete:Signal = new Signal();
 				
 		private var frontPreForeground:FrontPreForegroundTwo;
@@ -129,13 +127,13 @@ package views {
 			treeLayerTwo.addChild( trees2 );
 			treeLayerTwo.addChild( trees5 );
 			treeLayerTwo.addChild( trees8 );
-			treeLayerTwo.addChild( trees10 );
+			treeLayerTwo.addChild( trees11 );
 			
 			treeLayerThree.addChild( trees3 );
 			treeLayerThree.addChild( trees6 );
 			treeLayerThree.addChild( trees9 );
-			treeLayerThree.addChild( trees11 );
-			
+			treeLayerThree.addChild( trees12 );
+						
 			trees4.x = trees.x + trees.width;
 			trees5.x = trees2.x + trees2.width;
 			trees6.x = trees3.x + trees3.width;
@@ -148,7 +146,7 @@ package views {
 			trees7.y = trees.y;
 			trees8.y = trees2.y;
 			trees9.y = trees3.y;
-			trees10.x = trees.x + trees.width * 2.75;
+			trees10.x = trees.x + trees.width * 3;
 			trees11.x = trees2.x + trees2.width * 3;
 			trees12.x = trees3.x + trees3.width * 3;
 			trees10.y = trees.y;
