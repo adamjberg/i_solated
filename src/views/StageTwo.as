@@ -324,6 +324,7 @@ package views {
 			{
 				frontPreForeground.removeBridge();
 				frontPostForeground.enableBridge();
+				frontPostForeground.bridgeTagged();
 				frontPostForeground.onBridgeClicked.add( _attemptBridgeBreak );
 			}
 			else if( name == FrontPostForegroundTwo.WATER_FALL )

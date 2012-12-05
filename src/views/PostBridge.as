@@ -15,9 +15,11 @@ package views {
 		public var onBridgeHit:Signal = new Signal();
 		
 		private const FPS:Number = 10;
-		private const BRIDGE_HIT:Number = 18;
-		private const START_LOOP:Number = 100;
-		private const END_LOOP:Number = 107.99;
+		private const BRIDGE_PIECE_FALL_END:Number = 23;
+		private const BRIDGE_BREAK_START:Number = 24;
+		private const BRIDGE_HIT:Number = 40;
+		private const START_LOOP:Number = 128;
+		private const END_LOOP:Number = 131;
 		
 		public function PostBridge( mc : MovieClip ) 
 		{
@@ -30,8 +32,14 @@ package views {
 			this.mouseEnabled = false;
 			SoundManager.getInstance().playSound( Sounds.BRIDGE_BREAK );
 			this.stop();
-			this.currentFrame = 2;
+			this.currentFrame = BRIDGE_BREAK_START;
 			this.setAnimationTimes( [ BRIDGE_HIT ], [ ( BRIDGE_HIT - currentFrame ) / FPS ], _afterBridgeHit );
+		}
+		
+		public function playFallingPiece():void
+		{
+			this.currentFrame = 1;
+			this.setAnimationTimes( [ BRIDGE_PIECE_FALL_END ], [ ( BRIDGE_PIECE_FALL_END - currentFrame ) / FPS ] );
 		}
 		
 		private function _afterBridgeHit():void

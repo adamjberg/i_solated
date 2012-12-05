@@ -216,6 +216,12 @@ package views {
 			tagObjectByName( WATER_WHEEL );
 		}
 		
+				
+		public function bridgeTagged():void
+		{
+			this.postBridgeAnimation.playFallingPiece();
+		}
+		
 		private function _onBridgeClicked( e:MouseEvent ):void
 		{
 			e.stopImmediatePropagation();
