@@ -199,7 +199,7 @@ package views {
 			this.frontPostForeground.onTag.add( this.controller.foregroundController.objectTagged );
 			this.frontPostForeground.onGateOpened.addOnce( ( this.controller.foregroundModel as StageTwoForeground ).enableWalkPastGate );
 			
-			this.postForeground.onOpenGate.addOnce( this.frontPostForeground.openGate );
+			this.postForeground.onOpenGate.addOnce( this._openGate );
 			this.postForeground.onControlBoxClicked.add( _attemptPlaceCog );
 			
 			// Only add once because it should only be picked up once
@@ -388,7 +388,14 @@ package views {
 			if( this.numCogsPlaced <= 0 )
 				this.controller.movePlayerTo( new AnimationPoint( 3801, 779, PlayerAnimations.PLACE_COG, Directions.RIGHT, { item: Items.COG } ) );
 			else
-				this.controller.movePlayerTo(  new AnimationPoint( 3763, 781, PlayerAnimations.PLACE_COG, Directions.RIGHT, { item: Items.COG } ) );
+				this.controller.movePlayerTo(  new AnimationPoint( 3763, 781, PlayerAnimations.PLACE_COG, Directions.RIGHT, { item: Items.COG } ), function():void
+				{
+					controller.cameraController.panTo( 200, 0, false, 50 );
+					TweenLite.delayedCall( 2, function():void
+					{
+						controller.cameraController.panTo( 0, 0 );
+					});
+				});
 		}
 		
 		// Remove the cogs using the one that is closest to the player.... kind crappy
@@ -567,6 +574,11 @@ package views {
 			{
 				this.postForeground.disableCogPlacement();
 			}
+		}
+		
+		private function _openGate():void
+		{
+			this.frontPostForeground.openGate();
 		}
 		
 		private function _checkForBridgeEnable():void
