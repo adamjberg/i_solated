@@ -5,6 +5,8 @@ package views {
 	import core.SoundItem;
 	import core.Sounds;
 
+	import com.greensock.TweenLite;
+
 	import org.osflash.signals.Signal;
 
 	import flash.display.MovieClip;
@@ -53,7 +55,7 @@ package views {
 			{
 				endTriggered = true;
 				var si:SoundItem = SoundManager.getInstance().getSoundItem( Sounds.INTO_TIME_LAPSE );
-				si.onComplete.addOnce( function( si:SoundItem ):void
+				TweenLite.delayedCall( ( si.sound.length - 50 ) * 0.001, function():void
 				{
 					_removeListeners();
 					onComplete.dispatch(); 
