@@ -154,6 +154,12 @@ package controllers {
 						this.placeCog();
 					else if( playerModel.currentPoint.playerAnimationRequired == PlayerAnimations.BUTTON_PRESS )
 						this.pressButton();
+						
+					if( _savedCompleteFunction != null )
+					{
+						_savedCompleteFunction();
+						_savedCompleteFunction = null;
+					}
 				}
 				else if( playerModel.points.length > 0 )
 				{
