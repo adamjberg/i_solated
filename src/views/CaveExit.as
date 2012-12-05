@@ -132,7 +132,6 @@ package views {
 		private function _playBGM():void
 		{
 			SoundManager.getInstance().createLoopCrossFade( Sounds.RAIN, 1, 1 );
-			SoundManager.getInstance().createLoopCrossFade( Sounds.BGM_CH3, 2, 1 );
 		}
 
 		public function unload() : void 
