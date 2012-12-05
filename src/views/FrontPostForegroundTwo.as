@@ -52,7 +52,12 @@ package views {
 			waterFallMask.graphics.drawRect( 1500, 373, 170, 200 );
 			waterFallMask.graphics.drawRect( 1670, 0, 200, 800 );
 			waterFallMask.graphics.drawRect( 1870, 360, 1000, 200 );
-			super( foreground, [ WATER_FALL, BRIDGE, WATER_WHEEL, STUCK_COG, HILL_COG, DRIPPING ], pulseModel, [ waterFallMask ], false );
+			
+			var postBridgeMask:TaggableMask = new TaggableMask( TaggableMask.TOP_LEFT );
+			postBridgeMask.graphics.beginFill( 0 );
+			postBridgeMask.graphics.drawRect( 0, 0, 310, 400 );
+			
+			super( foreground, [ WATER_FALL, BRIDGE, WATER_WHEEL, STUCK_COG, HILL_COG, DRIPPING ], pulseModel, [ waterFallMask, postBridgeMask ], false );
 			
 			stuckCog = foreground.removeChild( foreground.getChildByName( STUCK_COG ) )as Sprite;
 			hillCog = foreground.removeChild( foreground.getChildByName( HILL_COG ) ) as Sprite;
