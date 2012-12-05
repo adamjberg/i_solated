@@ -47,7 +47,7 @@ package views {
 			foreground.x += xOffset;
 			var waterFallMask:TaggableMask = new TaggableMask( TaggableMask.TOP_LEFT );
 			waterFallMask.graphics.beginFill( 0 );
-			waterFallMask.graphics.drawRect( 0, 0, 800, 600 );
+			waterFallMask.graphics.drawRect( 0, -70, 800, 600 );
 			waterFallMask.graphics.drawRect( 800, 360, 700, 200 );
 			waterFallMask.graphics.drawRect( 1500, 373, 170, 200 );
 			waterFallMask.graphics.drawRect( 1670, 0, 200, 800 );
