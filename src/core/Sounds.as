@@ -13,9 +13,8 @@ package core {
 	{
 		public static var onInitialSoundsLoaded:Signal = new Signal();
 		
-		private static const WEB:Boolean = false;
+		private static const WEB:Boolean = true;
 		private static const FILE_LOC:String = WEB ? "http://www.catharticgames.com/games/i_solated/assets/Sounds/" : "../assets/Sounds/";
-		private static const EMBED:Boolean = false;
 		
 		public static const BGM_START_CH1:String = 'BGMStartCh1';
 		public static const BGM_LOOP_CH1:String = 'BGMLoopCh1';
@@ -70,111 +69,6 @@ package core {
 		public static const BEACH_SCENE:String = 'beachScene';
 		public static const REST_SCENE:String = 'restScene';
 		public static const WOOD_WALKING:String = 'woodWalking';			
-		
-		/*[Embed(source="/../assets/Sounds/Ch.1MusicStart.mp3")]
-		private static const BgmStartCh1:Class;
-		[Embed(source="/../assets/Sounds/Ch.1MusicLoop.mp3")]
-		private static const BgmLoopCh1:Class;
-		[Embed(source="/../assets/Sounds/Ch2MusicStart.mp3")]
-		private static const BgmStartCh2:Class;
-		[Embed(source="/../assets/Sounds/Ch2MusicLoop.mp3")]
-		private static const BgmLoopCh2:Class;
-		[Embed(source="/../assets/Sounds/Ch2MusicEnd.mp3")]
-		private static const BgmEndCh2:Class;
-		[Embed(source="/../assets/Sounds/Ch.3 Music.mp3")]
-		private static const BgmCh3:Class;
-		[Embed(source="/../assets/Sounds/BonusTrack.mp3")]
-		private static const BonusSong:Class;
-		[Embed(source="/../assets/Sounds/Credits.mp3")]
-		private static const Credits:Class;
-		[Embed(source="/../assets/Sounds/RevealSceneMusic.mp3")]
-		private static const RevealRoomMusic:Class;
-		[Embed(source="/../assets/Sounds/Start Jump Ch. 1.mp3")]
-		private static const StartJump:Class;
-		[Embed(source="/../assets/Sounds/Pulse.mp3")]
-		private static const Pulse:Class;
-		[Embed(source="/../assets/Sounds/Wind Noise Ch. 1.mp3")]
-		private static const Wind:Class;
-		[Embed(source="/../assets/Sounds/Small Landing Ch. 1.mp3")]
-		private static const SmallLanding:Class;
-		[Embed(source="/../assets/Sounds/DirtWalking.mp3")]
-		private static const CliffWalking:Class;
-		[Embed(source="/../assets/Sounds/FactoryFootsteps.mp3")]
-		private static const FactoryWalking:Class;
-		[Embed(source="/../assets/Sounds/GrassWalking.mp3")]
-		private static const GrassWalking:Class;
-		[Embed(source="/../assets/Sounds/GrassWalkingWithObject.mp3")]
-		private static const WalkingWithItem:Class;
-		[Embed(source="/../assets/Sounds/FactoryFootstepsWithObject.mp3")]
-		private static const WalkingWithItemFactory:Class;
-		[Embed(source="/../assets/Sounds/Catapult.mp3")]
-		private static const TreeBreak:Class;
-		[Embed(source="/../assets/Sounds/LogCrack1.mp3")]
-		private static const CrackOne:Class;
-		[Embed(source="/../assets/Sounds/LogCrack2.mp3")]
-		private static const CrackTwo:Class;
-		[Embed(source="/../assets/Sounds/Ch.2LogBreakWaterfall.mp3")]
-		private static const LogBreak:Class;
-		[Embed(source="/../assets/Sounds/Ch.2WaterfallLoop.mp3")]
-		private static const WaterFall:Class;		
-		[Embed(source="/../assets/Sounds/Ch.2WaterfallDrops.mp3")]
-		private static const Dripping:Class;
-		[Embed(source="/../assets/Sounds/Ch.2RiverLoop.mp3")]
-		private static const River:Class;
-		[Embed(source="/../assets/Sounds/Ch.2Waterwheel.mp3")]
-		private static const WaterWheel:Class;
-		[Embed(source="/../assets/Sounds/Ch.2CogPickup.mp3")]
-		private static const PickUpCog:Class;
-		[Embed(source="/../assets/Sounds/Ch.2CogPlacement.mp3")]
-		private static const PlaceCog:Class;
-		[Embed(source="/../assets/Sounds/Ch.2RockPickup.mp3")]
-		private static const PickUpRock:Class;
-		[Embed(source="/../assets/Sounds/BridgeBreakWithPing.mp3")]
-		private static const BridgeBreak:Class;		
-		[Embed(source="/../assets/Sounds/Ch.2GateLifting.mp3")]
-		private static const GateLifting:Class;
-		[Embed(source="/../assets/Sounds/Ch.2RockPlacement.mp3")]
-		private static const PlaceRock:Class;
-		[Embed(source="/../assets/Sounds/BucketLineMovement.mp3")]
-		private static const BucketMovement:Class;
-		[Embed(source="/../assets/Sounds/ElevatorSound.mp3")]
-		private static const Elevator:Class;
-		[Embed(source="/../assets/Sounds/FactoryButtonPush1.mp3")]
-		private static const Button1:Class;
-		[Embed(source="/../assets/Sounds/FactoryButtonPush2.mp3")]
-		private static const Button2:Class;
-		[Embed(source="/../assets/Sounds/FactoryButtonPush3.mp3")]
-		private static const Button3:Class;
-		[Embed(source="/../assets/Sounds/FactoryRiver.mp3")]
-		private static const FactoryRiver:Class;
-		[Embed(source="/../assets/Sounds/FactoryWireSpark.mp3")]
-		private static const Spark:Class;
-		[Embed(source="/../assets/Sounds/ValveSceneSoundBounce.mp3")]
-		private static const ValveScene:Class;
-		[Embed(source="/../assets/Sounds/Waterfill1.mp3")]
-		private static const WaterFill1:Class;
-		[Embed(source="/../assets/Sounds/Waterfill2.mp3")]
-		private static const WaterFill2:Class;
-		[Embed(source="/../assets/Sounds/Waterfill3.mp3")]
-		private static const WaterFill3:Class;
-		[Embed(source="/../assets/Sounds/DragginInSand(Better).mp3")]
-		private static const SandFootsteps:Class;
-		[Embed(source="/../assets/Sounds/ValvePickUp.mp3")]
-		private static const ValvePickup:Class;
-		[Embed(source="/../assets/Sounds/DiscoverSceneSound.mp3")]
-		private static const FlowerScene:Class;
-		[Embed(source="/../assets/Sounds/RainLoop.mp3")]
-		private static const Rain:Class;
-		[Embed(source="/../assets/Sounds/TimeLapseSoundOnlyPiano.mp3")]
-		private static const TimeLapse:Class;
-		[Embed(source="/../assets/Sounds/LeadingToTimeLapse.mp3")]
-		private static const IntoTimeLapse:Class;
-		[Embed(source="/../assets/Sounds/BeachSceneWithEndingWaves.mp3")]
-		private static const BeachScene:Class;
-		[Embed(source="/../assets/Sounds/Ch.1RestSceneSoundRevised.mp3")]
-		private static const RestScene:Class;
-		[Embed(source="/../assets/Sounds/WoodFootSteps.mp3")]
-		private static const WoodWalking:Class;*/
 		
 		public static const WALKING_SOUNDS:Array = 
 		[
@@ -337,204 +231,96 @@ package core {
 		
 		private static function addGeneralSounds():void
 		{
-			if( EMBED )
-			{
-				/*soundManager.addPreloadedSound( new SmallLanding(), SMALL_LANDING );
-				soundManager.addPreloadedSound( new Pulse(), PULSE );
-				soundManager.addPreloadedSound( new StartJump(), START_JUMP );
-				soundManager.addPreloadedSound( new GrassWalking(), GRASS_WALKING );
-				soundManager.addPreloadedSound( new CliffWalking(), CLIFF_WALKING );
-				soundManager.addPreloadedSound( new WalkingWithItem(), WALKING_WITH_ITEM );
-				soundManager.addPreloadedSound( new FactoryWalking(), FACTORY_WALKING );
-				soundManager.addPreloadedSound( new WalkingWithItemFactory(), WALKING_WITH_ITEM_FACTORY );*/
-			}
-			else
-			{
-				soundManager.addExternalSound( FILE_LOC + 'Pulse.mp3', PULSE );
-				soundManager.addExternalSound( FILE_LOC + 'GrassWalking.mp3', GRASS_WALKING );
-				soundManager.addExternalSound( FILE_LOC + 'GrassWalkingWithObject.mp3', WALKING_WITH_ITEM );
-				soundManager.addExternalSound( FILE_LOC + 'FactoryFootsteps.mp3', FACTORY_WALKING );
-				soundManager.addExternalSound( FILE_LOC + 'FactoryFootstepsWithObject.mp3', WALKING_WITH_ITEM_FACTORY );
-			}
-			
-			
+			soundManager.addExternalSound( FILE_LOC + 'Pulse.mp3', PULSE );
+			soundManager.addExternalSound( FILE_LOC + 'GrassWalking.mp3', GRASS_WALKING );
+			soundManager.addExternalSound( FILE_LOC + 'GrassWalkingWithObject.mp3', WALKING_WITH_ITEM );
+			soundManager.addExternalSound( FILE_LOC + 'FactoryFootsteps.mp3', FACTORY_WALKING );
+			soundManager.addExternalSound( FILE_LOC + 'FactoryFootstepsWithObject.mp3', WALKING_WITH_ITEM_FACTORY );
 		}
 		
 		private static function addChapterOneSounds():void
 		{
 			//CHAPTER 1
-			if( EMBED )
-			{
-				/*soundManager.addPreloadedSound( new RestScene(), REST_SCENE );
-				soundManager.addPreloadedSound( new Wind(), WIND );
-				soundManager.addPreloadedSound( new BgmStartCh1(), BGM_START_CH1 );
-				soundManager.addPreloadedSound( new BgmLoopCh1(), BGM_LOOP_CH1 );*/
-			}
-			else
-			{
-				soundManager.addExternalSound( FILE_LOC + 'Ch.1RestSceneSoundRevised.mp3', REST_SCENE );
-				soundManager.addExternalSound( FILE_LOC + 'Ch.1MusicLoop.mp3', BGM_LOOP_CH1 );
-			}
+			soundManager.addExternalSound( FILE_LOC + 'Ch.1RestSceneSoundRevised.mp3', REST_SCENE );
+			soundManager.addExternalSound( FILE_LOC + 'Ch.1MusicLoop.mp3', BGM_LOOP_CH1 );
 		}
 		
 		private static function addChapterTwoSounds():void
 		{
 			//CHAPTER 2
-			if( EMBED )
-			{
-				/*soundManager.addPreloadedSound( new River(), RIVER );
-				soundManager.addPreloadedSound( new TreeBreak(), TREE_BREAK );
-				soundManager.addPreloadedSound( new CrackOne(), CRACK_ONE );
-				soundManager.addPreloadedSound( new CrackTwo(), CRACK_TWO );
-				soundManager.addPreloadedSound( new LogBreak(), LOG_BREAK );
-				soundManager.addPreloadedSound( new WaterFall(), WATER_FALL );
-				soundManager.addPreloadedSound( new WaterFall(), WATER_FALL2 );
-				soundManager.addPreloadedSound( new Dripping(), DRIPPING );
-				soundManager.addPreloadedSound( new BgmStartCh2(), BGM_START_CH2 );
-				soundManager.addPreloadedSound( new BgmLoopCh2(), BGM_LOOP_CH2 );
-				soundManager.addPreloadedSound( new BgmEndCh2(), BGM_END_CH2 );
-				soundManager.addPreloadedSound( new WaterWheel(), WATER_WHEEL );
-				soundManager.addPreloadedSound( new PickUpCog(), PICK_UP_COG );
-				soundManager.addPreloadedSound( new PlaceCog(), PLACE_COG );
-				soundManager.addPreloadedSound( new PickUpRock(), PICK_UP_ROCK );
-				soundManager.addPreloadedSound( new BridgeBreak(), BRIDGE_BREAK );
-				soundManager.addPreloadedSound( new GateLifting(), GATE_LIFTING );
-				soundManager.addPreloadedSound( new PlaceRock(), PLACE_ROCK );
-				soundManager.addPreloadedSound( new WoodWalking(), WOOD_WALKING );*/
-			}
-			else
-			{
-				soundManager.addExternalSound( FILE_LOC + 'Ch.2RiverLoop.mp3', RIVER );
-				soundManager.addExternalSound( FILE_LOC + 'Catapult.mp3', TREE_BREAK );
-				soundManager.addExternalSound( FILE_LOC + 'LogCrack1.mp3', CRACK_ONE );
-				soundManager.addExternalSound( FILE_LOC + 'LogCrack2.mp3', CRACK_TWO );
-				soundManager.addExternalSound( FILE_LOC + 'Ch.2LogBreakWaterfall.mp3', LOG_BREAK );
-				soundManager.addExternalSound( FILE_LOC + 'Ch.2WaterfallLoop.mp3', WATER_FALL );
-				soundManager.addExternalSound( FILE_LOC + 'Ch.2WaterfallLoop.mp3', WATER_FALL2 );
-				soundManager.addExternalSound( FILE_LOC + 'Ch.2WaterfallDrops.mp3', DRIPPING );
-				soundManager.addExternalSound( FILE_LOC + 'Ch2MusicStart.mp3', BGM_START_CH2 );
-				soundManager.addExternalSound( FILE_LOC + 'Ch2MusicLoop.mp3', BGM_LOOP_CH2 );
-				soundManager.addExternalSound( FILE_LOC + 'Ch.2MusicEnding.mp3', BGM_END_CH2 );
-				soundManager.addExternalSound( FILE_LOC + 'Ch.2Waterwheel.mp3', WATER_WHEEL );
-				soundManager.addExternalSound( FILE_LOC + 'Ch.2CogPickup.mp3', PICK_UP_COG );
-				soundManager.addExternalSound( FILE_LOC + 'Ch.2CogPlacement.mp3', PLACE_COG );
-				soundManager.addExternalSound( FILE_LOC + 'Ch.2RockPickup.mp3', PICK_UP_ROCK );
-				soundManager.addExternalSound( FILE_LOC + 'BridgeBreakWithPing.mp3', BRIDGE_BREAK );
-				soundManager.addExternalSound( FILE_LOC + 'Ch.2GateLifting.mp3', GATE_LIFTING );
-				soundManager.addExternalSound( FILE_LOC + 'Ch.2RockPlacement.mp3', PLACE_ROCK );
-				soundManager.addExternalSound( FILE_LOC + 'WoodFootSteps.mp3', WOOD_WALKING );				
-			}
-
+			soundManager.addExternalSound( FILE_LOC + 'Ch.2RiverLoop.mp3', RIVER );
+			soundManager.addExternalSound( FILE_LOC + 'Catapult.mp3', TREE_BREAK );
+			soundManager.addExternalSound( FILE_LOC + 'LogCrack1.mp3', CRACK_ONE );
+			soundManager.addExternalSound( FILE_LOC + 'LogCrack2.mp3', CRACK_TWO );
+			soundManager.addExternalSound( FILE_LOC + 'Ch.2LogBreakWaterfall.mp3', LOG_BREAK );
+			soundManager.addExternalSound( FILE_LOC + 'Ch.2WaterfallLoop.mp3', WATER_FALL );
+			soundManager.addExternalSound( FILE_LOC + 'Ch.2WaterfallLoop.mp3', WATER_FALL2 );
+			soundManager.addExternalSound( FILE_LOC + 'Ch.2WaterfallDrops.mp3', DRIPPING );
+			soundManager.addExternalSound( FILE_LOC + 'Ch2MusicStart.mp3', BGM_START_CH2 );
+			soundManager.addExternalSound( FILE_LOC + 'Ch2MusicLoop.mp3', BGM_LOOP_CH2 );
+			soundManager.addExternalSound( FILE_LOC + 'Ch.2MusicEnding.mp3', BGM_END_CH2 );
+			soundManager.addExternalSound( FILE_LOC + 'Ch.2Waterwheel.mp3', WATER_WHEEL );
+			soundManager.addExternalSound( FILE_LOC + 'Ch.2CogPickup.mp3', PICK_UP_COG );
+			soundManager.addExternalSound( FILE_LOC + 'Ch.2CogPlacement.mp3', PLACE_COG );
+			soundManager.addExternalSound( FILE_LOC + 'Ch.2RockPickup.mp3', PICK_UP_ROCK );
+			soundManager.addExternalSound( FILE_LOC + 'BridgeBreakWithPing.mp3', BRIDGE_BREAK );
+			soundManager.addExternalSound( FILE_LOC + 'Ch.2GateLifting.mp3', GATE_LIFTING );
+			soundManager.addExternalSound( FILE_LOC + 'Ch.2RockPlacement.mp3', PLACE_ROCK );
+			soundManager.addExternalSound( FILE_LOC + 'WoodFootSteps.mp3', WOOD_WALKING );				
 		}
 		
 		private static function addFactorySounds():void
 		{
 			// FACTORY
-			if( EMBED )
-			{
-				/*soundManager.addPreloadedSound( new BucketMovement(), BUCKET_MOVEMENT );
-				soundManager.addPreloadedSound( new Elevator(), ELEVATOR );
-				soundManager.addPreloadedSound( new Button1(), BUTTON_1 );
-				soundManager.addPreloadedSound( new Button2(), BUTTON_2 );
-				soundManager.addPreloadedSound( new Button3(), BUTTON_3 );
-				soundManager.addPreloadedSound( new FactoryRiver(), FACTORY_RIVER );
-				soundManager.addPreloadedSound( new Spark(), SPARK );
-				soundManager.addPreloadedSound( new ValveScene(), VALVE_SCENE );
-				soundManager.addPreloadedSound( new WaterFill1(), WATER_FILL_1 );
-				soundManager.addPreloadedSound( new WaterFill2(), WATER_FILL_2 );
-				soundManager.addPreloadedSound( new WaterFill3(), WATER_FILL_3 );
-				soundManager.addPreloadedSound( new ValvePickup(), VALVE_PICKUP );
-				soundManager.addPreloadedSound( new RevealRoomMusic(), REVEAL_ROOM_MUSIC );*/
-			}
-			else
-			{
-				soundManager.addExternalSound( FILE_LOC + 'BucketLineMovement.mp3', BUCKET_MOVEMENT );
-				soundManager.addExternalSound( FILE_LOC + 'ElevatorSound.mp3', ELEVATOR );
-				soundManager.addExternalSound( FILE_LOC + 'FactoryButtonPush1.mp3', BUTTON_1 );
-				soundManager.addExternalSound( FILE_LOC + 'FactoryButtonPush2.mp3', BUTTON_2 );
-				soundManager.addExternalSound( FILE_LOC + 'FactoryButtonPush3.mp3', BUTTON_3 );
-				soundManager.addExternalSound( FILE_LOC + 'FactoryRiver.mp3', FACTORY_RIVER );
-				soundManager.addExternalSound( FILE_LOC + 'FactoryWireSpark.mp3', SPARK );
-				soundManager.addExternalSound( FILE_LOC + 'ValveSceneSoundBounce.mp3', VALVE_SCENE );
-				soundManager.addExternalSound( FILE_LOC + 'Waterfill1.mp3', WATER_FILL_1 );
-				soundManager.addExternalSound( FILE_LOC + 'Waterfill2.mp3', WATER_FILL_2 );
-				soundManager.addExternalSound( FILE_LOC + 'Waterfill3.mp3', WATER_FILL_3 );
-				soundManager.addExternalSound( FILE_LOC + 'ValvePickUp.mp3', VALVE_PICKUP );
-				soundManager.addExternalSound( FILE_LOC + 'RevealSceneMusic.mp3', REVEAL_ROOM_MUSIC );
-			}		
+			soundManager.addExternalSound( FILE_LOC + 'BucketLineMovement.mp3', BUCKET_MOVEMENT );
+			soundManager.addExternalSound( FILE_LOC + 'ElevatorSound.mp3', ELEVATOR );
+			soundManager.addExternalSound( FILE_LOC + 'FactoryButtonPush1.mp3', BUTTON_1 );
+			soundManager.addExternalSound( FILE_LOC + 'FactoryButtonPush2.mp3', BUTTON_2 );
+			soundManager.addExternalSound( FILE_LOC + 'FactoryButtonPush3.mp3', BUTTON_3 );
+			soundManager.addExternalSound( FILE_LOC + 'FactoryRiver.mp3', FACTORY_RIVER );
+			soundManager.addExternalSound( FILE_LOC + 'FactoryWireSpark.mp3', SPARK );
+			soundManager.addExternalSound( FILE_LOC + 'ValveSceneSoundBounce.mp3', VALVE_SCENE );
+			soundManager.addExternalSound( FILE_LOC + 'Waterfill1.mp3', WATER_FILL_1 );
+			soundManager.addExternalSound( FILE_LOC + 'Waterfill2.mp3', WATER_FILL_2 );
+			soundManager.addExternalSound( FILE_LOC + 'Waterfill3.mp3', WATER_FILL_3 );
+			soundManager.addExternalSound( FILE_LOC + 'ValvePickUp.mp3', VALVE_PICKUP );
+			soundManager.addExternalSound( FILE_LOC + 'RevealSceneMusic.mp3', REVEAL_ROOM_MUSIC );	
 		}
 		
 		private static function addFlowerSceneSounds():void
 		{
 			// FLOWER SCENE
-			if( EMBED )
-			{
-				//soundManager.addPreloadedSound( new FlowerScene(), FLOWER_SCENE );
-			}
-			else
-				soundManager.addExternalSound( FILE_LOC + 'DiscoverSceneSound.mp3', FLOWER_SCENE );
+			soundManager.addExternalSound( FILE_LOC + 'DiscoverSceneSound.mp3', FLOWER_SCENE );
 		}
 		
 		private static function addCaveExitSounds():void
 		{
 			// CHAPTER 3
-			if( EMBED )
-			{
-				/*soundManager.addPreloadedSound( new Rain(), RAIN );
-				soundManager.addPreloadedSound( new BgmCh3(), BGM_CH3 );
-				soundManager.addPreloadedSound( new IntoTimeLapse(), INTO_TIME_LAPSE );*/
-			}
-			else
-			{
-				soundManager.addExternalSound( FILE_LOC + 'RainLoop.mp3', RAIN );
-				soundManager.addExternalSound( FILE_LOC + 'Ch.3 Music.mp3', BGM_CH3 );
-				soundManager.addExternalSound( FILE_LOC + 'LeadingToTimeLapse.mp3', INTO_TIME_LAPSE );
-			}
+			soundManager.addExternalSound( FILE_LOC + 'RainLoop.mp3', RAIN );
+			soundManager.addExternalSound( FILE_LOC + 'Ch.3 Music.mp3', BGM_CH3 );
+			soundManager.addExternalSound( FILE_LOC + 'LeadingToTimeLapse.mp3', INTO_TIME_LAPSE );
 		}
 		
 		private static function addFinalJourneySounds():void
 		{
-			if( EMBED )
-			{
-				//soundManager.addPreloadedSound( new SandFootsteps(), SAND_FOOTSTEPS );
-			}
-			else
-				soundManager.addExternalSound( FILE_LOC + 'DragginInSand(Better).mp3', SAND_FOOTSTEPS );
+			soundManager.addExternalSound( FILE_LOC + 'DragginInSand(Better).mp3', SAND_FOOTSTEPS );
 		}
 		
 		private static function addTimeLapseSounds():void
 		{
-			if( EMBED )
-			{
-				//soundManager.addPreloadedSound( new TimeLapse(), TIME_LAPSE );
-			}
-			else
-				soundManager.addExternalSound( FILE_LOC + 'TimeLapseSoundOnlyPiano.mp3', TIME_LAPSE );
+			soundManager.addExternalSound( FILE_LOC + 'TimeLapseSoundOnlyPiano.mp3', TIME_LAPSE );
 		}
 		
 		private static function addBeachSceneSounds():void
 		{
 			// BEACH SCENE
-			if( EMBED )
-			{
-				//soundManager.addPreloadedSound( new BeachScene(), BEACH_SCENE );
-			}
-			else
-				soundManager.addExternalSound( FILE_LOC + 'BeachSceneWithEndingWaves.mp3', BEACH_SCENE );
+			soundManager.addExternalSound( FILE_LOC + 'BeachSceneWithEndingWaves.mp3', BEACH_SCENE );
 		}
 		
 		private static function addCreditsSounds():void
 		{
-			if( EMBED )
-			{
-				/*soundManager.addPreloadedSound( new Credits(), CREDITS );
-				soundManager.addPreloadedSound( new BonusSong(), BONUS_SONG );*/
-			}
-			else
-			{
-				soundManager.addExternalSound( FILE_LOC + 'Credits.mp3', CREDITS );
-				soundManager.addExternalSound( FILE_LOC + 'BonusTrack.mp3', BONUS_SONG );
-			}
+			soundManager.addExternalSound( FILE_LOC + 'Credits.mp3', CREDITS );
+			soundManager.addExternalSound( FILE_LOC + 'BonusTrack.mp3', BONUS_SONG );
 		}
 	}
 }
