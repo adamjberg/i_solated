@@ -223,9 +223,6 @@ package core {
 		private static function addInitialSounds():void
 		{
 			soundManager.addExternalSound( FILE_LOC + 'Wind Noise Ch. 1.mp3', WIND );
-			soundManager.addExternalSound( FILE_LOC + 'DirtWalking.mp3', CLIFF_WALKING );
-			soundManager.addExternalSound( FILE_LOC + 'Start Jump Ch. 1.mp3', START_JUMP );
-			soundManager.addExternalSound( FILE_LOC + 'Small Landing Ch. 1.mp3', SMALL_LANDING );
 			soundManager.addExternalSound( FILE_LOC + 'Ch.1MusicStart.mp3', BGM_START_CH1 );
 		}
 		
@@ -243,6 +240,9 @@ package core {
 			//CHAPTER 1
 			soundManager.addExternalSound( FILE_LOC + 'Ch.1RestSceneSoundRevised.mp3', REST_SCENE );
 			soundManager.addExternalSound( FILE_LOC + 'Ch.1MusicLoop.mp3', BGM_LOOP_CH1 );
+			soundManager.addExternalSound( FILE_LOC + 'DirtWalking.mp3', CLIFF_WALKING );
+			soundManager.addExternalSound( FILE_LOC + 'Start Jump Ch. 1.mp3', START_JUMP );
+			soundManager.addExternalSound( FILE_LOC + 'Small Landing Ch. 1.mp3', SMALL_LANDING );
 		}
 		
 		private static function addChapterTwoSounds():void
