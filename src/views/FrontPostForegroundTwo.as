@@ -29,6 +29,7 @@ package views {
 		public var onHillCogClicked:Signal = new Signal();
 		public var onStuckCogClicked:Signal = new Signal();
 		public var onGateOpened:Signal = new Signal();
+		public var onFinalLogCrack:Signal = new Signal();
 
 		private var dripping:MovieClip;
 		private var drippingAnimation:Dripping;
@@ -153,6 +154,8 @@ package views {
 				this.waterFallAnimation.nextCrack();
 				logCrackPoints.shift();
 			}
+			if( this.logCrackPoints.length == 0 )
+				this.onFinalLogCrack.dispatch();
 		}
 		
 		public function playLogBreak():void

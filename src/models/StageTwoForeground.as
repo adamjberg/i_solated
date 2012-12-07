@@ -54,7 +54,7 @@ package models {
 		private const waterFallPoints:Array = 
 		[
 			 new Point( 2745, 458 ), new Point( 2775, 455 ), new Point( 2799, 452 ), new Point( 2836, 453 ), new Point( 2876, 448 ), 
-			 new Point( 2903, 448 ), new JumpPoint( 2915, 444, PlayerAnimations.SIDE_JUMP ), new Point( 2996, 435 ), new Point( 3017, 434 ),
+			 new Point( 2903, 448 )
 		];
 
 		public function StageTwoForeground()

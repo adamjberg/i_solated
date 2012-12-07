@@ -9,6 +9,7 @@ package views {
 	import models.AnimationPoint;
 	import models.Directions;
 	import models.Items;
+	import models.JumpPoint;
 	import models.StageTwoForeground;
 
 	import com.greensock.TweenLite;
@@ -17,7 +18,6 @@ package views {
 
 	import flash.display.Sprite;
 	import flash.geom.Point;
-	import flash.utils.getTimer;
 	import flash.utils.setTimeout;
 	/**
 	 * @author Adam
@@ -206,9 +206,6 @@ package views {
 			// Add more than once because there are two cogs
 			this.controller.playerController.onPickUpCog.add( _pickUpCog );
 			
-			// DANGER DANGER! THE FIRST LEAP IS THE ONE I NEED!!!!! If one comes before it....BOOM
-			this.controller.playerController.onStartLeap.addOnce( _onFirstLeap );
-			
 		}
 
 		private function _removeListeners():void
@@ -231,7 +228,6 @@ package views {
 			
 			this.controller.playerController.onPickUpRock.remove( this._removeRock );
 			this.controller.playerController.onPickUpCog.remove( this._pickUpCog );
-			this.controller.playerController.onStartLeap.remove( this._onFirstLeap );
 		}
 
 		public function unload() : void
@@ -614,11 +610,12 @@ package views {
 			{
 				frontPostForeground.checkForLogCrack( controller.playerModel.relativeXPos );
 			});
-		}
-		
-		private function _onFirstLeap():void
-		{
-			this.frontPostForeground.playLogBreak();
+			frontPostForeground.onFinalLogCrack.addOnce( function():void
+			{
+				controller.disableMovement();
+				controller.playerController.moveThroughPoints( [ new JumpPoint( 2915, 444, PlayerAnimations.SIDE_JUMP ), new Point( 2996, 435 ) ], controller.enableMovement );
+				TweenLite.delayedCall( 0.1, frontPostForeground.playLogBreak );
+			});
 		}
 		
 		private function _transitionIn():void
