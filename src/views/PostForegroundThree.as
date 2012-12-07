@@ -188,6 +188,7 @@ package views {
 		
 		public function enableLiftControls():void
 		{
+			_turnLiftButtonGreen();
 			this.liftButton.visible = true;
 			liftControls.mouseEnabled = true;
 			liftButton.mouseEnabled = true;
@@ -319,19 +320,29 @@ package views {
 		{
 			if( elevatorPuzzleModel.elevatorHeight == ElevatorPuzzleModel.LOW )
 			{
-				enableLiftControls();
+				_turnLiftButtonGreen();
 				lowerLift();
 			}
 			else if( elevatorPuzzleModel.elevatorHeight == ElevatorPuzzleModel.MID )
 			{
-				disableLiftControls();
+				_turnLiftButtonRed();
 				raiseLiftHalf();
 			}
 			else if( elevatorPuzzleModel.elevatorHeight == ElevatorPuzzleModel.HIGH )
 			{
-				disableLiftControls();
+				_turnLiftButtonRed();
 				raiseLiftFull();
 			}
+		}
+		
+		private function _turnLiftButtonGreen():void
+		{
+			this.liftButton.gotoAndStop( 2 );
+		}
+		
+		private function _turnLiftButtonRed():void
+		{
+			this.liftButton.gotoAndStop( 1 );
 		}
 		
 		private function _valveSceneClicked( e:MouseEvent ):void
@@ -415,10 +426,7 @@ package views {
 			}
 			else if( name == PreForegroundThree.LIFT_CONTROLS )
 			{
-				if( liftButton.currentFrame == 1 )
-					liftButton.nextFrame();
-				else
-					liftButton.prevFrame();
+				_turnLiftButtonRed();
 			}
 			else if( name == PreForegroundThree.BUCKET_BUTTON )
 			{
