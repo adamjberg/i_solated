@@ -37,7 +37,7 @@ package models {
 		private const boulderPoints:Array =
 		[
 			 new JumpPoint( 4100, 429, PlayerAnimations.SIDE_JUMP ), new JumpPoint( 4183, 422, PlayerAnimations.SIDE_JUMP, Directions.LEFT ), new Point( 4208, 414 ), new JumpPoint( 4226, 412, PlayerAnimations.JUMP_DOWN_SMALL ), new JumpPoint( 4255, 441, PlayerAnimations.JUMP_UP, Directions.LEFT, -310 ), new Point( 4292, 434 ), new Point( 4329, 422 ), new Point( 4336, 417 ), new Point( 4351, 419 ), new Point( 4388, 426 ), new JumpPoint( 4405, 431, PlayerAnimations.JUMP_UP, Directions.RIGHT, -310 ), new JumpPoint( 4437, 398, PlayerAnimations.JUMP_DOWN_SMALL, Directions.LEFT ), new JumpPoint( 4447, 401, PlayerAnimations.SIDE_JUMP ),
-			new JumpPoint( 4548, 431, PlayerAnimations.SIDE_JUMP, Directions.LEFT ), new Point( 4692, 430 ), new Point( 4891, 438 ), new Point( 5140, 448 ), new Point( 5356, 448 ), new Point( 5570, 452 ), new Point( 5826, 452 ), new Point( 6076, 457 ), new Point( 6245, 459 ),
+			new JumpPoint( 4548, 431, PlayerAnimations.SIDE_JUMP, Directions.LEFT ), new Point( 4692, 430 ), new Point( 4891, 438 ), new Point( 5140, 448 ), new Point( 5356, 448 ), new Point( 5570, 452 ), new Point( 5826, 452 ), new Point( 6076, 457 ), new Point( 6225, 459 ),
 			 
 		];
 		
