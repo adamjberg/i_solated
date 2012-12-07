@@ -73,6 +73,10 @@ package controllers {
 			{
 				onEnableLiftControls.dispatch();
 			}
+			else
+			{
+				onDisableLiftControls.dispatch();
+			}
 			if( elevatorPuzzleModel.allowSpark )
 			{
 				onShowSpark.dispatch();
