@@ -606,16 +606,19 @@ package views {
 		
 		private function _startLogBreakCheck():void
 		{
-			this.controller.playerModel.onPosChanged.add( function():void
-			{
-				frontPostForeground.checkForLogCrack( controller.playerModel.relativeXPos );
-			});
+			this.controller.playerModel.onPosChanged.add( this._checkForLogCrack );
 			frontPostForeground.onFinalLogCrack.addOnce( function():void
 			{
+				controller.playerModel.onPosChanged.remove( _checkForLogCrack );
 				controller.disableMovement();
 				controller.playerController.moveThroughPoints( [ new JumpPoint( 2915, 444, PlayerAnimations.SIDE_JUMP ), new Point( 2996, 435 ) ], controller.enableMovement );
 				TweenLite.delayedCall( 0.1, frontPostForeground.playLogBreak );
 			});
+		}
+		
+		private function _checkForLogCrack():void
+		{
+			frontPostForeground.checkForLogCrack( controller.playerModel.relativeXPos );
 		}
 		
 		private function _transitionIn():void
