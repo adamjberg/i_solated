@@ -306,6 +306,7 @@ package views {
 		{
 			if( this._tutorial && this.contains( this._tutorial ) )
 			{
+				this.player.onPulse.remove( this._tutorial.showTagControls );
 				removeChild( this._tutorial );
 				this._tutorial = null;
 			}
