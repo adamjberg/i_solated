@@ -132,7 +132,7 @@ package views {
 			this.controller.playerController.onStartLeap.add( this._jumpedOffElevator );
 			this.controller.playerController.onStartJumpDownSmall.add( this._jumpedOffElevator );
 			this.controller.playerController.onPickUpValve.addOnce( this.postForeground.removeValve );
-			this.controller.playerController.onStartJumpUp.add( this._jumpedOnElevator );
+			this.controller.playerController.onStartJumpUp.add( this._startjumpOntoElevator );
 			
 			this.player.onAnimationComplete.add( this.controller.playerController.changeAnimation );
 			this.player.onButtonPressed.add( this._zoopPressedButton );
@@ -172,7 +172,7 @@ package views {
 			this.controller.playerController.onStartLeap.remove( this._jumpedOffElevator );
 			this.controller.playerController.onStartJumpDownSmall.remove( this._jumpedOffElevator );
 			this.controller.playerController.onPickUpValve.remove( this.postForeground.removeValve );
-			this.controller.playerController.onStartJumpUp.remove( this._jumpedOnElevator );
+			this.controller.playerController.onStartJumpUp.remove( this._startjumpOntoElevator );
 			
 			this.player.onAnimationComplete.remove( this.controller.playerController.changeAnimation );
 			this.player.onButtonPressed.remove( this._zoopPressedButton );
@@ -377,10 +377,9 @@ package views {
 				this.removeChild( player );
 		}
 		
-		private function _jumpedOnElevator():void
+		private function _startjumpOntoElevator():void
 		{
 			this.controller.cameraController.panTo( 0, -150, false, 0, 0, false );
-			this.elevatorPuzzleController.jumpedOnElevator();
 			this.postForeground.jumpedOnElevator();
 			this.preForeground.jumpedOnElevator();
 		}
