@@ -196,7 +196,6 @@ package views {
 		
 		protected function hideTaggables():void
 		{
-			stage.frameRate = 30;
 			if( _keepMask )
 				return;
 			if( _addForegroundAsChild )
@@ -215,7 +214,6 @@ package views {
 		
 		protected function showTaggables():void
 		{
-			//stage.frameRate = 12;
 			if( _addForegroundAsChild )
 			{
 				this.foreground.cacheAsBitmap = true;
