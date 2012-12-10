@@ -85,7 +85,7 @@ package views {
 			splashes4 = new Splashes( caveExit.removeChild( caveExit.getChildByName( 'splashes4' ) ) as MovieClip );
 			rockSplashes = new Splashes( caveExit.removeChild( caveExit.getChildByName( 'rockSplashes' ) ) as MovieClip );
 			
-			caveForeground = new Sprite();
+			caveForeground = new Foreground( this.controller.foregroundModel );
 			caveForeground.addChild( caveExit.removeChild( caveExit.getChildByName( 'caveFore' ) ) as Sprite );
 			caveForeground.addChild( rain1 );
 			caveForeground.addChild( rain2 );
@@ -96,21 +96,24 @@ package views {
 			caveForeground.addChild( splashes3 );
 			caveForeground.addChild( splashes4 );
 			caveForeground.addChild( rockSplashes );
-			
-			foreground = new Foreground( caveForeground, new Sprite(), this.controller.foregroundModel );
-			
-			hills = new Sprite();
-			hills2 = new Sprite();
-			mountains = new Sprite();
-			
-			hills.addChild( caveExit.removeChild( caveExit.getChildByName( 'caveHills' ) ) as Sprite );
-			hills2.addChild( caveExit.removeChild( caveExit.getChildByName( 'caveHills1' ) ) as Sprite );
-			mountains.addChild( caveExit.removeChild( caveExit.getChildByName( 'caveMountains' ) ) as Sprite );
-			background = new Background( [ mountains, hills, hills2 ], [ -.3, -0.35, -.4 ], this.controller.foregroundModel );
+						
+			hills = caveExit.removeChild( caveExit.getChildByName( 'caveHills' ) ) as Sprite;
+			hills2 = caveExit.removeChild( caveExit.getChildByName( 'caveHills1' ) ) as Sprite;
+			mountains = caveExit.removeChild( caveExit.getChildByName( 'caveMountains' ) ) as Sprite;
+			background = new Background(
+				[ mountains, hills, hills2 ],
+				[ 
+					new Point( mountains.x, mountains.y ),
+					new Point( hills.x, hills.y ),
+					new Point( hills2.x, hills2.y )
+				],
+				[ -.3, -0.35, -.4 ],
+				this.controller.foregroundModel
+			);
 						
 			this.addChild( caveExit );
 			this.addChild( background );
-			this.addChild( foreground );
+			this.addChild( caveForeground );
 			this.addChild( pulse );
 			
 			_playBGM();

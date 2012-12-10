@@ -41,8 +41,6 @@ package views {
 		private var postForeground:PostForegroundTwo;
 		private var background:Background;
 		
-		private var frontForeground:Foreground;
-		private var foreground:Foreground;
 		private var player:Player;
 		
 		private var treeLayerOne:Sprite;
@@ -99,8 +97,9 @@ package views {
 			var rawPreForeground:Sprite = stageTwo.removeChild( stageTwo.getChildByName( 'preForeground' ) ) as Sprite;
 			var rawPostForeground:Sprite = stageTwo.removeChild( stageTwo.getChildByName( 'postForeground' )  ) as Sprite;
 			
-			preForeground = new PreForegroundTwo( rawPreForeground );
-			postForeground = new PostForegroundTwo( rawPostForeground, this.controller.pulseModel );
+			preForeground = new PreForegroundTwo( rawPreForeground, this.controller.foregroundModel );
+			preForeground.mouseEnabled = false;
+			postForeground = new PostForegroundTwo( rawPostForeground, this.controller.foregroundModel, this.controller.pulseModel );
 			
 			treeLayerOne = new Sprite();
 			trees = stageTwo.removeChild( stageTwo.getChildByName( 'trees1' ) ) as Sprite;
@@ -155,25 +154,30 @@ package views {
 						
 			background = new Background( 
 				[ treeLayerThree, treeLayerTwo, treeLayerOne ],
+				[ 
+					new Point( 0, 0 ),
+					new Point( 0, 0 ),
+					new Point( 0, 0 ),
+				],
 				[ TREES3_SPEED, TREES2_SPEED, TREES1_SPEED ],
 				this.controller.foregroundModel
 			);
 			addChild( background );
 
-			frontPreForeground = new FrontPreForegroundTwo( rawPreForeground, 0 );
-			frontPostForeground = new FrontPostForegroundTwo( rawPostForeground, 0, this.controller.pulseModel );
-			frontForeground = new Foreground( frontPreForeground, frontPostForeground, this.controller.foregroundModel );
-
-			foreground = new Foreground( preForeground, postForeground, this.controller.foregroundModel );
+			frontPreForeground = new FrontPreForegroundTwo( rawPreForeground, this.controller.foregroundModel );
+			frontPreForeground.mouseEnabled = false;
+			frontPostForeground = new FrontPostForegroundTwo( rawPostForeground, this.controller.foregroundModel, this.controller.pulseModel );
 			player = new Player( this.controller.playerModel );
 
 			this.controller.playerController.onPlayerLanded.add( this.player.endJump );
 				
 			pulse = new Pulse( this.controller.pulseModel );			
 			
-			addChild( foreground );
+			addChild( preForeground );
+			addChild( postForeground );
+			addChild( frontPreForeground );
+			addChild( frontPostForeground );
 			addChild( player );	
-			addChild( frontForeground );
 			addChild( pulse );
 			
 			this.controller.cameraController.rightWall = RIGHT_WALL;
@@ -259,7 +263,6 @@ package views {
 			postForeground = null;
 			background = null;
 			
-			foreground = null;
 			player = null;
 			
 			_tutorial = null;

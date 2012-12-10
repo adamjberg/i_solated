@@ -66,9 +66,8 @@ package views {
 			
 			var stageThree:Sprite = new STAGE_THREE();
 			preForeground = new PreForegroundThree( stageThree.removeChild( stageThree.getChildByName( 'preForeground' ) ) as Sprite, X_OFFSET, Y_OFFSET, elevatorPuzzleController.elevatorPuzzleModel, this.bucketConveyorController.bucketConveyorModel );
-			postForeground = new PostForegroundThree( stageThree.removeChild( stageThree.getChildByName( 'postForeground' )  ) as Sprite, elevatorPuzzleController.elevatorPuzzleModel, this.controller.pulseModel, this.bucketConveyorController.bucketConveyorModel );
+			postForeground = new PostForegroundThree( stageThree.removeChild( stageThree.getChildByName( 'postForeground' )  ) as Sprite, this.controller.foregroundModel, elevatorPuzzleController.elevatorPuzzleModel, this.controller.pulseModel, this.bucketConveyorController.bucketConveyorModel );
 			
-			foreground = new Foreground( preForeground, postForeground, this.controller.foregroundModel );
 			player = new Player( this.controller.playerModel );
 
 			elevatorPuzzleController.onEnableLiftControls.add( 
@@ -90,7 +89,8 @@ package views {
 			
 			preForeground.onIntroComplete.addOnce( this._start );
 			
-			addChild( foreground );
+			addChild( preForeground );
+			addChild( postForeground );
 			
 			pulse = new Pulse( this.controller.pulseModel );
 			addChild( pulse );

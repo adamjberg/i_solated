@@ -1,25 +1,19 @@
 package views {
 	import controllers.LevelController;
 	import controllers.SoundManager;
-
 	import core.Arrays;
 	import core.GameState;
 	import core.SoundItem;
 	import core.Sounds;
-
 	import models.AnimationPoint;
 	import models.PanPoint;
 	import models.StageOneForeground;
 	import models.Surfaces;
 	import models.TutorialPoint;
-
 	import com.greensock.TweenLite;
-	import com.greensock.TweenMax;
-
 	import org.osflash.signals.Signal;
-
 	import flash.display.Sprite;
-	import flash.filters.GlowFilter;
+	import flash.geom.Point;
 	/**
 	 * @author Adam
 	 */
@@ -41,7 +35,6 @@ package views {
 		private var postForeground:PostForegroundOne;
 		private var background:Background;
 		
-		private var foreground:Foreground;
 		private var player:Player;
 		
 		private var _tutorial:Tutorial;
@@ -92,44 +85,50 @@ package views {
 			
 			var stageOne:Sprite = new STAGE_ONE();
 			var environment:Sprite = stageOne.removeChild( stageOne.getChildByName( 'prepulseforeground' )  ) as Sprite;
-			preForeground = environment.removeChild( environment.getChildByName( 'Preforeground' ) ) as Sprite;
-			postForeground = new PostForegroundOne( stageOne.removeChild( stageOne.getChildByName( 'PostForeground' )  ) as Sprite, this.controller.pulseModel );
+			preForeground = new Foreground( this.controller.foregroundModel ); 
+			preForeground.addChild( environment.removeChild( environment.getChildByName( 'Preforeground' ) ) as Sprite );
+			postForeground = new PostForegroundOne( stageOne.removeChild( stageOne.getChildByName( 'PostForeground' )  ) as Sprite, this.controller.foregroundModel, this.controller.pulseModel );
 			
 			city = new Sprite();
 			city.addChild( environment.removeChild( environment.getChildByName( 'city' ) ) );
 			city.getChildAt( 0 ).x += Math.abs( 4200 * CITY_SPEED );
 			
-			mountainsBack = new Sprite();
-			mountainsBack.addChild( environment.removeChild( environment.getChildByName( 'mountains' )  ) );
+			mountainsBack = environment.removeChild( environment.getChildByName( 'mountains' )  ) as Sprite;
 			
-			mountainsFrontLeft = new Sprite();
-			mountainsFrontLeft.addChild( environment.removeChild( environment.getChildByName( 'mountainsLeft' )  ) );
+			mountainsFrontLeft = environment.removeChild( environment.getChildByName( 'mountainsLeft' )  ) as Sprite;
 			
-			mountainsFrontRight = new Sprite();
-			mountainsFrontRight.addChild( environment.removeChild( environment.getChildByName( 'mountainsRight' )  ) );
+			mountainsFrontRight = environment.removeChild( environment.getChildByName( 'mountainsRight' )  ) as Sprite;
 			
-			trees = new Sprite();
-			trees.addChild( environment.removeChild( environment.getChildByName( 'trees' )  ) );
-			
-			trees2 = new Sprite();
-			trees2.addChild( environment.removeChild( environment.getChildByName( 'trees2' )  ) );
-			
-			trees3 = new Sprite();
-			trees3.addChild( environment.removeChild( environment.getChildByName( 'trees3' )  ) );
+			trees = environment.removeChild( environment.getChildByName( 'trees' )  ) as Sprite;
+			trees2 = environment.removeChild( environment.getChildByName( 'trees2' )  ) as Sprite;
+			trees3 = environment.removeChild( environment.getChildByName( 'trees3' )  ) as Sprite;
 
-			trees.getChildAt( 0 ).x = Math.abs( TREES1_SPEED * ( trees.getChildAt( 0 ).x - 150 ) );
-			trees2.getChildAt( 0 ).x = Math.abs( TREES2_SPEED * trees2.getChildAt( 0 ).x );
-			trees3.getChildAt( 0 ).x = Math.abs( TREES3_SPEED * trees3.getChildAt( 0 ).x );
+			trees.x = Math.abs( TREES1_SPEED * ( trees.x - 150 ) );
+			trees2.x = Math.abs( TREES2_SPEED * trees2.x );
+			trees3.x = Math.abs( TREES3_SPEED * trees3. x );
 
-			background = new Background( [ mountainsBack, city, mountainsFrontLeft, mountainsFrontRight, trees3, trees2, trees ], [ 0, CITY_SPEED, LEFT_MOUNTAIN_SPEED, RIGHT_MOUNTAIN_SPEED, TREES3_SPEED, TREES2_SPEED, TREES1_SPEED ], this.controller.foregroundModel );
+			background = new Background( 
+				[ mountainsBack, city, mountainsFrontLeft, mountainsFrontRight, trees3, trees2, trees ], 
+				[ 	
+					new Point( mountainsBack.x, mountainsBack.y ), 
+					new Point( city.x, city.y ), 
+					new Point( mountainsFrontLeft.x, mountainsFrontLeft.y ),
+					new Point( mountainsFrontRight.x, mountainsFrontRight.y ),
+					new Point( trees3.x, trees3.y ),
+					new Point( trees2.x, trees2.y ),
+					new Point( trees.x, trees.y ),
+				],
+				[ 0, CITY_SPEED, LEFT_MOUNTAIN_SPEED, RIGHT_MOUNTAIN_SPEED, TREES3_SPEED, TREES2_SPEED, TREES1_SPEED ], 
+				this.controller.foregroundModel 
+				);
 			addChild( background );
 
-			foreground = new Foreground( preForeground, postForeground, this.controller.foregroundModel );
 			player = new Player( this.controller.playerModel );
 						
 			pulse = new Pulse( this.controller.pulseController.pulseModel );
 		
-			addChild( foreground );
+			addChild( preForeground );
+			addChild( postForeground );
 			addChild( player );
 			addChild( pulse );
 			
@@ -177,7 +176,6 @@ package views {
 			postForeground = null;
 			background = null;
 			
-			foreground = null;
 			player = null;
 			
 			_tutorial = null;

@@ -63,7 +63,7 @@ package views {
 			foreground.addChild( plant );
 			foreground.addChild( light );
 
-			postForeground = new PostForeground( foreground, [], this.controller.pulseModel );
+			postForeground = new PostForeground( foreground, this.controller.foregroundModel, [], this.controller.pulseModel );
 			foreground.cacheAsBitmap = false;
 			this.addChild( postForeground );
 			

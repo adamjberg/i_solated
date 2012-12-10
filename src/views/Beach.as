@@ -81,8 +81,15 @@ package views {
 			beachFore.x = -500;
 			beachFore.y += 20;
 			
-			this.foreground = new Foreground( beachFore, new Sprite(), this.controller.foregroundModel );
-			this.background = new Background( [ clouds, hillContainer ], [ -0.3, -0.4 ], this.controller.foregroundModel );
+			this.background = new Background( 
+				[ clouds, hillContainer ],
+				[
+					new Point( clouds.x, clouds.y ),
+					new Point( hillContainer.x, hillContainer.y )
+				],
+				[ -0.3, -0.4 ],
+				this.controller.foregroundModel
+			);
 			
 			this.controller.playerModel.speedMultiplier = 0.15;
 			this.controller.playerModel.allowWalkingSound = false;
@@ -95,7 +102,7 @@ package views {
 			this.controller.enableMovement();
 			
 			this.addChild( background );
-			this.addChild( foreground );
+			this.addChild( beachFore );
 			this.addChild( finalWalk );
 			
 			_listenForClick();
