@@ -12,16 +12,18 @@ package core {
 	import views.StageThree;
 	import views.StageTwo;
 
+	import com.flashdynamix.utils.SWFProfiler;
 	import com.greensock.plugins.FramePlugin;
-	import com.greensock.plugins.GlowFilterPlugin;
 	import com.greensock.plugins.TweenPlugin;
 
 	import flash.display.Sprite;
 	import flash.display.StageScaleMode;
 	import flash.events.Event;
+	import flash.events.KeyboardEvent;
+	import flash.ui.Keyboard;
 	import flash.utils.getTimer;
 	
-	[SWF(name="i_solated", width="800", height="600", frameRate="30", backgroundColor="#444444")]
+	[SWF(name="i_solated", width="800", height="600", frameRate="60", backgroundColor="#444444")]
 	public class Main extends Sprite 
 	{
 		private var deltaTime:Number;
@@ -42,6 +44,7 @@ package core {
 		
 		public function Main()
 		{
+			SWFProfiler.init( this );
 			TweenPlugin.activate([FramePlugin]);
 			Sounds.onInitialSoundsLoaded.addOnce( _showMainMenu );
 			Sounds.init();
@@ -67,6 +70,7 @@ package core {
 			deltaTime = 0.0;
 			lastTime = getTimer();
 			stage.addEventListener(Event.ENTER_FRAME, enterFrame, false, 0, true );
+			stage.addEventListener( KeyboardEvent.KEY_DOWN, this._keyDown );
 		}
 		
 		private function _showMainMenu():void
@@ -99,6 +103,12 @@ package core {
 			deltaTime = getTimer() - lastTime;
 		    lastTime += deltaTime;
 			ScreenManager.update( deltaTime * 0.001 );
+		}
+		
+		private function _keyDown( e:KeyboardEvent ):void
+		{
+			if( e.keyCode == Keyboard.RIGHT )
+				this._nextStage();
 		}
 	}
 }
