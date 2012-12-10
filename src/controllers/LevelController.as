@@ -138,7 +138,7 @@ package controllers {
 		
 		public function movePlayerTo( point:Point, onComplete:Function = null ):void
 		{
-			this.playerController.moveThroughPoints( this.foregroundController.getPath( new Point( this.playerModel.relativeXPos, this.playerModel.relativeYPos ), point ), onComplete ) 
+			this.playerController.moveThroughPoints( this.foregroundController.getPath( new Point( this.playerModel.relativeXPos, this.playerModel.relativeYPos ), point ), onComplete ); 
 		}
 		
 		public function disableMovement():void
@@ -153,7 +153,7 @@ package controllers {
 		
 		public function pulse():void
 		{
-			this.pulseController.pulse( this.playerModel.xPos, this.playerModel.yPos - 150, this.playerModel.relativeXPos, this.playerModel.relativeYPos - 150, Math.max( Math.abs( this.playerModel.xPos - this.stage.stageWidth ), this.playerModel.xPos ) );
+			this.pulseController.pulse( this.playerModel.xPos, this.playerModel.yPos - 150, this.playerModel.relativeXPos, this.playerModel.relativeYPos - 150, Math.max( Math.abs( this.playerModel.xPos - this.stage.stageWidth * Math.sqrt( 2 ) ), this.playerModel.xPos + 50 ) );
 		}
 		
 		public function disableBackwardsMovement():void

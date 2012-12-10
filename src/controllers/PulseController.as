@@ -2,7 +2,7 @@ package controllers {
 	import models.PulseModel;
 
 	import com.greensock.TweenLite;
-	import com.greensock.easing.Quad;
+	import com.greensock.easing.Linear;
 	/**
 	 * @author Adam
 	 */
@@ -32,7 +32,7 @@ package controllers {
 				radTween.kill();
 				radTween = null;
 			}
-			
+						
 			pulseModel.maskCenterX = playerRelXPos;
 			pulseModel.maskCenterY = playerRelYPos;
 			pulseModel.centerX = realPlayerXPos;
@@ -40,7 +40,7 @@ package controllers {
 			pulseModel.radius = PulseModel.START_RADIUS;
 			pulseModel.playing = true;
 			var time:Number = ( maxSize + PulseModel.SPACE_BETW ) * PulseModel.SPEED;
-			radTween = TweenLite.to( pulseModel, time + 2, { radius : maxSize + PulseModel.SPACE_BETW * 2, ease: Quad.easeOut, onComplete: this.pulseModel.onComplete.dispatch } );
+			radTween = TweenLite.to( pulseModel, time, { radius : maxSize + PulseModel.SPACE_BETW * 2, ease: Linear.easeNone, onComplete: this.pulseModel.onComplete.dispatch } );
 			pulseModel.onPlay.dispatch();
 		}
 	}
