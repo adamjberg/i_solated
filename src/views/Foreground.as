@@ -11,22 +11,22 @@ package views {
 	 * @author Adam
 	 */
 	public class Foreground extends Sprite 
-	{
-		public var onTagAttempted:Signal = new Signal( Number, Number );
-		
-		private var preForeground:Sprite;
-		private var postForeground:Sprite;
+	{		
 		public var foregroundModel : ForegroundModel;
+		private var _useScrollRect:Boolean;
 		
-		public function Foreground( pre:Sprite, post:Sprite, foregroundModel:ForegroundModel ) 
+		public function Foreground( foregroundModel:ForegroundModel, useScrollRect:Boolean = true ) 
 		{
-			preForeground = pre;
-			postForeground = post;
-			addChild( preForeground );
-			addChild( postForeground );
+			if( !foregroundModel )
+			{
+				trace( 'Foreground Model does not exist' );
+				return;
+			}
 			this.foregroundModel = foregroundModel;
 			this.foregroundModel.onPosChanged.add( _updatePos );
-			this.addEventListener( Event.ADDED_TO_STAGE, _addedToStage );
+			this._useScrollRect = useScrollRect;
+			if( useScrollRect )
+				this.addEventListener( Event.ADDED_TO_STAGE, _addedToStage );
 		}
 		
 		private function _addedToStage( e:Event ):void
@@ -37,12 +37,19 @@ package views {
 				
 		private function _updatePos():void
 		{
-			if( !stage )
-				return;
-			var rect:Rectangle = this.scrollRect;
-			rect.x = -foregroundModel.x;
-			rect.y = -foregroundModel.y;
-			this.scrollRect = rect;
+			
+			if( this._useScrollRect )
+			{
+				var rect:Rectangle = this.scrollRect;
+				rect.x = -foregroundModel.x;
+				rect.y = -foregroundModel.y;
+				this.scrollRect = rect;
+			}
+			else
+			{
+				this.x = foregroundModel.x;
+				this.y = foregroundModel.y;
+			}
 		}
 	}
 }
