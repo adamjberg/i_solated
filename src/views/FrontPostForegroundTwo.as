@@ -1,6 +1,7 @@
 package views {
 	import core.SpriteManager;
 
+	import models.ForegroundModel;
 	import models.PulseModel;
 
 	import org.osflash.signals.Signal;
@@ -43,9 +44,8 @@ package views {
 		private var postBridgeAnimation:PostBridge;
 		private var logCrackPoints : Array = [new Point(2830, 454), new Point(2890, 449)];
 
-		public function FrontPostForegroundTwo( foreground:Sprite, xOffset:Number, pulseModel:PulseModel ) 
+		public function FrontPostForegroundTwo( foreground:Sprite, foregroundModel:ForegroundModel, pulseModel:PulseModel ) 
 		{
-			foreground.x += xOffset;
 			var waterFallMask:TaggableMask = new TaggableMask( TaggableMask.TOP_LEFT );
 			waterFallMask.graphics.beginFill( 0 );
 			waterFallMask.graphics.drawRect( 0, -70, 800, 600 );
@@ -58,7 +58,7 @@ package views {
 			postBridgeMask.graphics.beginFill( 0 );
 			postBridgeMask.graphics.drawRect( 0, 0, 310, 400 );
 			
-			super( foreground, [ WATER_FALL, BRIDGE, WATER_WHEEL, STUCK_COG, HILL_COG, DRIPPING ], pulseModel, [ waterFallMask, postBridgeMask ], false );
+			super( foreground, foregroundModel, [ WATER_FALL, BRIDGE, WATER_WHEEL, STUCK_COG, HILL_COG, DRIPPING ], pulseModel, [ waterFallMask, postBridgeMask ], false );
 			
 			stuckCog = foreground.removeChild( foreground.getChildByName( STUCK_COG ) )as Sprite;
 			hillCog = foreground.removeChild( foreground.getChildByName( HILL_COG ) ) as Sprite;

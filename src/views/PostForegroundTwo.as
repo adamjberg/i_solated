@@ -1,6 +1,7 @@
 package views {
 	import core.SpriteManager;
 
+	import models.ForegroundModel;
 	import models.PulseModel;
 
 	import org.osflash.signals.Signal;
@@ -8,7 +9,6 @@ package views {
 	import flash.display.MovieClip;
 	import flash.display.Sprite;
 	import flash.events.MouseEvent;
-	import flash.geom.Point;
 	import flash.geom.Rectangle;
 
 	/**
@@ -39,7 +39,7 @@ package views {
 		private var controlBox:MovieClip;
 		private var controlBoxAnimation:PostControlBox;
 
-		public function PostForegroundTwo( foreground:Sprite, pulseModel:PulseModel ) 
+		public function PostForegroundTwo( foreground:Sprite, foregroundModel:ForegroundModel, pulseModel:PulseModel ) 
 		{
 			treeBreak = new TreeBreak( 
 				foreground.removeChild( foreground.getChildByName( TREE_FALL ) ) as MovieClip				
@@ -48,7 +48,7 @@ package views {
 			springBoardRock = foreground.removeChild( foreground.getChildByName( SPRING_BOARD_ROCK ) ) as Sprite;
 			rock = foreground.getChildByName( ROCK ) as Sprite;
 			postTree = foreground.getChildByName( POST_TREE ) as Sprite;
-			super( foreground, [ ROCK, SPRING_BOARD, POST_TREE, CONTROL_BOX, ROCK_BLOCK ], pulseModel );
+			super( foreground, foregroundModel, [ ROCK, SPRING_BOARD, POST_TREE, CONTROL_BOX, ROCK_BLOCK ], pulseModel );
 			controlBox = foreground.removeChild( foreground.getChildByName( CONTROL_BOX ) ) as MovieClip;
 			
 			controlBoxAnimation = new PostControlBox( controlBox );

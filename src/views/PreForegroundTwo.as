@@ -1,11 +1,16 @@
 package views {
+	import models.ForegroundModel;
+
+	import utils.display.BitmapRenderer;
+
+	import flash.display.Bitmap;
 	import flash.display.MovieClip;
 	import flash.display.Sprite;
 
 	/**
 	 * @author Adam
 	 */
-	public class PreForegroundTwo extends Sprite 
+	public class PreForegroundTwo extends Foreground 
 	{
 		public static const ROCK:String = 'rock';
 		public static const SPRING_BOARD:String = 'springBoard';
@@ -22,10 +27,9 @@ package views {
 		private var waterFallTwo : MovieClip;
 		private var waterFallTwoAnimation:WaterFallTwo;
 		
-		public function PreForegroundTwo( foreground:Sprite ) 
+		public function PreForegroundTwo( foreground:Sprite, foregroundModel:ForegroundModel ) 
 		{
 			this.foreground = foreground;
-			this.addChild( foreground );
 			this.foreground.mouseChildren = false;
 			this.foreground.mouseEnabled = false;
 						
@@ -37,8 +41,14 @@ package views {
 			waterFallTwo = foreground.removeChild( foreground.getChildByName( WATER_FALL_TWO ) ) as MovieClip;
 			waterFallTwoAnimation = new WaterFallTwo( waterFallTwo );
 			
-			foreground.addChild( preControlBox );
-			foreground.addChild( waterFallTwoAnimation );
+			var bitmapForeground:Bitmap = BitmapRenderer.renderSingleBitmap( foreground );			
+			bitmapForeground.x = foreground.x;
+			bitmapForeground.y = foreground.y;
+			this.addChild( bitmapForeground );
+			this.addChild( preControlBox );
+			this.addChild( waterFallTwoAnimation );
+			
+			super( foregroundModel );
 		}
 		
 		public function destroy():void

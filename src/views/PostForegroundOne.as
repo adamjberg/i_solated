@@ -1,7 +1,6 @@
 package views {
+	import models.ForegroundModel;
 	import models.PulseModel;
-
-	import com.greensock.TweenLite;
 
 	import flash.display.Sprite;
 
@@ -18,11 +17,11 @@ package views {
 		
 		private var _boulder:Sprite;
 		
-		public function PostForegroundOne( foreground:Sprite, pulseModel:PulseModel ) 
+		public function PostForegroundOne( foreground:Sprite, foregroundModel:ForegroundModel, pulseModel:PulseModel ) 
 		{
 			shardMask.graphics.beginFill( 0 );
 			shardMask.graphics.drawCircle( -200, 0, 300 );
-			super( foreground, [ BOULDER, FALLEN_LOG, SHARD ], pulseModel, [ null, null, shardMask ] );
+			super( foreground, foregroundModel, [ BOULDER, FALLEN_LOG, SHARD ], pulseModel, [ null, null, shardMask ] );
 			this._boulder = foreground.getChildByName( BOULDER ) as Sprite;
 		}
 	}

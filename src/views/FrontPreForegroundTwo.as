@@ -1,11 +1,13 @@
 package views {
+	import models.ForegroundModel;
+
 	import flash.display.MovieClip;
 	import flash.display.Sprite;
 
 	/**
 	 * @author Adam
 	 */
-	public class FrontPreForegroundTwo extends Sprite 
+	public class FrontPreForegroundTwo extends Foreground 
 	{
 		public static const WATER_FALL:String = 'preWaterFall';
 		public static const BRIDGE:String = 'PreBridge';
@@ -17,7 +19,7 @@ package views {
 		private var waterWheel:MovieClip;
 		private var waterWheelAnimation:WaterWheel;
 		
-		public function FrontPreForegroundTwo( foreground:Sprite, xOffset:Number ) 
+		public function FrontPreForegroundTwo( foreground:Sprite, foregroundModel:ForegroundModel ) 
 		{
 			bridge = foreground.getChildByName( BRIDGE ) as Sprite;
 			waterFall = foreground.removeChild( foreground.getChildByName( WATER_FALL ) ) as MovieClip;
@@ -36,6 +38,7 @@ package views {
 			addChild( bridge );
 			addChild( waterFallAnimation );
 			addChild( waterWheelAnimation );
+			super( foregroundModel );
 		}		
 				
 		public function removeWaterfall():void

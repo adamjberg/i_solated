@@ -6,12 +6,14 @@ package views {
 
 	import models.BucketConveyorModel;
 	import models.ElevatorPuzzleModel;
+	import models.ForegroundModel;
 	import models.PulseModel;
 
 	import com.greensock.TweenLite;
 	import com.greensock.easing.Linear;
 
 	import org.osflash.signals.Signal;
+
 	import flash.display.MovieClip;
 	import flash.display.Sprite;
 	import flash.events.MouseEvent;
@@ -79,11 +81,11 @@ package views {
 		}
 		public function get liftHeight():Number { return liftSupport.scaleY; }
 		
-		public function PostForegroundThree( foreground:Sprite, elevatorPuzzleModel:ElevatorPuzzleModel, pulseModel:PulseModel, bucketConveyorModel:BucketConveyorModel )
+		public function PostForegroundThree( foreground:Sprite, foregroundModel:ForegroundModel, elevatorPuzzleModel:ElevatorPuzzleModel, pulseModel:PulseModel, bucketConveyorModel:BucketConveyorModel )
 		{
 			sparkMask.graphics.beginFill( 0 );
 			sparkMask.graphics.drawCircle( 0, 0, 50 );
-			super( foreground, [ SPARK, LIFT, VALVE, MISSING_GROUND ], pulseModel, [ sparkMask ] );
+			super( foreground, foregroundModel, [ SPARK, LIFT, VALVE, MISSING_GROUND ], pulseModel, [ sparkMask ] );
 			
 			this.bucketConveyorModel = bucketConveyorModel;
 			this.bucketConveyorModel.onEmptyBucket.add( _bucketRelease );
