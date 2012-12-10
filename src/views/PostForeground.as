@@ -2,19 +2,19 @@ package views {
 	import core.Arrays;
 	import core.SpriteManager;
 
+	import models.ForegroundModel;
 	import models.PulseModel;
-
-	import com.greensock.TweenLite;
 
 	import org.osflash.signals.Signal;
 
 	import flash.display.Sprite;
+	import flash.events.Event;
 	import flash.geom.Rectangle;
 
 	/**
 	 * @author Adam
 	 */
-	public class PostForeground extends Sprite 
+	public class PostForeground extends Foreground 
 	{
 		public var onTag:Signal = new Signal( String );	
 		
@@ -26,11 +26,11 @@ package views {
 		private var _keepMask:Boolean = false;
 		private var _addForegroundAsChild:Boolean;
 		
-		public function PostForeground( foreground:Sprite, taggableNames:Array, pulseModel:PulseModel, taggableMasks:Array = null, addForegroundAsChild:Boolean = true ) 
+		public function PostForeground( foreground:Sprite, foregroundModel:ForegroundModel, taggableNames:Array, pulseModel:PulseModel, taggableMasks:Array = null, addForegroundAsChild:Boolean = true ) 
 		{
 			var object:Taggable;
 			var taggableMask:TaggableMask;
-			
+						
 			_addForegroundAsChild = addForegroundAsChild;
 			taggableNames.forEach( function( name:String, i:int, a:Array ):void
 			{
@@ -52,7 +52,7 @@ package views {
 				taggables.push( object );
 			});
 			this.foreground = foreground;
-			
+						
 			this.pulseModel = pulseModel;
 			this.pulseModel.onPlay.add( showTaggables );
 			this.pulseModel.onComplete.add( hideTaggables );
@@ -60,6 +60,8 @@ package views {
 			this.pulse = new PulseMask( pulseModel );
 			this.foregroundMask = new Sprite();
 			this.addChild( foregroundMask );
+			this.foregroundMask.cacheAsBitmap = true;
+			this.foreground.cacheAsBitmap = true;
 			
 			if( _addForegroundAsChild )
 			{
@@ -70,6 +72,17 @@ package views {
 			{
 				this.mask = foregroundMask;
 			}
+			super( foregroundModel );
+		}
+
+		private function _updatePos():void
+		{	
+			if( !stage )
+				return;
+			var rect:Rectangle = this.scrollRect;
+			rect.x = -foregroundModel.x;
+			rect.y = -foregroundModel.y;
+			this.scrollRect = rect;
 		}
 
 		public function destroy():void
@@ -87,16 +100,6 @@ package views {
 
 		public function keepMask():void
 		{
-			if( _addForegroundAsChild )
-			{
-				this.foreground.cacheAsBitmap = false;
-			}
-			else
-			{
-				this.cacheAsBitmap = false;
-			}
-			this.pulse.cacheAsBitmap = false;
-			this.foregroundMask.cacheAsBitmap = false;
 			this._keepMask = true;
 		}
 
@@ -198,12 +201,6 @@ package views {
 		{
 			if( _keepMask )
 				return;
-			if( _addForegroundAsChild )
-			{
-				this.foreground.cacheAsBitmap = false;
-			}
-			this.foregroundMask.cacheAsBitmap = false;
-			this.pulse.cacheAsBitmap = false;
 			if( foregroundMask.contains( pulse ) )
 				this.foregroundMask.removeChild( pulse );
 			this.taggables.forEach( function ( taggable:Taggable, i:int, a:Array ):void
@@ -214,17 +211,6 @@ package views {
 		
 		protected function showTaggables():void
 		{
-			if( _addForegroundAsChild )
-			{
-				this.foreground.cacheAsBitmap = true;
-				this.pulse.cacheAsBitmap = true;
-				this.foregroundMask.cacheAsBitmap = true;
-			}
-			else
-			{
-				// For some reason this disables the mouse on children....
-				//this.cacheAsBitmap = true;
-			}
 			if( !foregroundMask.contains( pulse ) )
 				this.foregroundMask.addChild( pulse );
 			this.taggables.forEach( function ( taggable:Taggable, i:int, a:Array ):void
