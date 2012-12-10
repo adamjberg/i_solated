@@ -1,20 +1,19 @@
 package views {
 	import models.PulseModel;
 
-	import flash.display.Sprite;
-	import flash.events.Event;
+	import utils.display.BitmapRenderer;
+
+	import flash.display.Bitmap;
+	import flash.display.Shape;
 	import flash.filters.BlurFilter;
-	import flash.geom.Rectangle;
 	import flash.utils.getTimer;
 
 	/**
 	 * @author Adam
 	 */
-	public class Pulse extends Sprite
-	{				
-		private static const TIME_BETW_UPDATES:Number = 100;
-		
-		private static const PULSE_WIDTH:int = 5;
+	public class Pulse extends Bitmap
+	{		
+		private static const PULSE_WIDTH:int = 10;
 		
 		private var model:PulseModel;
 		
@@ -22,22 +21,20 @@ package views {
 		
 		public function Pulse( pulseModel:PulseModel )
 		{
-			super();
+			var pulseGraphic:Shape = new Shape();
+			pulseGraphic.graphics.lineStyle( PULSE_WIDTH, 0x444444 );
+			pulseGraphic.graphics.drawCircle( 800, 800, 800 );
+			pulseGraphic.graphics.drawCircle( 800, 800, 400 );
+			pulseGraphic.filters = [ new BlurFilter( 8, 8, 2 ) ];
+			
+			super( BitmapRenderer.renderSingleBitmap( pulseGraphic ).bitmapData );
+
 			this.model = pulseModel;
 			this.model.onComplete.add( _remove );
 			this.model.onPlay.add( _add );
 			this.model.onRadiusChanged.add( _redraw );
 			this.visible = false;
-			this.filters = [ new BlurFilter( 8, 8, 2 ) ];
-			this.addEventListener( Event.ADDED_TO_STAGE, _addedToStage );
-			this.mouseChildren = false;
-			this.mouseEnabled = false;
 		} 
-		
-		private function _addedToStage( e:Event ):void
-		{
-			this.scrollRect = new Rectangle( 0, 0, stage.stageWidth, stage.stageHeight );
-		}
 		
 		private function _remove():void
 		{
@@ -51,19 +48,14 @@ package views {
 		
 		private function _redraw( radius:Number ):void
 		{			
-			//if( getTimer() - lastUpdateTime < TIME_BETW_UPDATES )
-				//return;
-			
 			lastUpdateTime = getTimer();
 						
 			var centerX:Number = model.centerX;
 			var centerY:Number = model.centerY;
 			
-			this.graphics.clear();
-			this.graphics.lineStyle( PULSE_WIDTH, 0x444444 );
-			if( radius - PulseModel.SPACE_BETW > 0 )
-				this.graphics.drawCircle( centerX, centerY, radius - PulseModel.SPACE_BETW ); 
-			this.graphics.drawCircle( centerX, centerY, radius );
+			this.width = this.height = radius * 2;
+			this.x = centerX - this.width * 0.5;
+			this.y = centerY - this.height * 0.5; 
 		}
 	}
 }
