@@ -1,29 +1,35 @@
 package views {
 	import models.PulseModel;
-	import flash.display.GradientType;
-	import flash.display.Sprite;
-	import flash.geom.Matrix;
+
+	import utils.display.BitmapRenderer;
+
+	import flash.display.Bitmap;
+	import flash.display.Shape;
 
 	/**
 	 * @author Adam
 	 */
-	public class PulseMask extends Sprite 
+	public class PulseMask extends Bitmap 
 	{
 		private var model:PulseModel;
-		
+				
 		public function PulseMask( pulseModel:PulseModel ) 
 		{
+			var maskGraphic:Shape = new Shape();
+			maskGraphic.graphics.beginFill( 0 );
+			maskGraphic.graphics.drawCircle( 800, 800, 800 );
+			maskGraphic.graphics.drawCircle( 800, 800, 400 );
+			
+			super( BitmapRenderer.renderSingleBitmap( maskGraphic ).bitmapData );
+			
 			this.model = pulseModel;
 			this.model.onComplete.add( _remove );
 			this.model.onRadiusChanged.add( _redraw );
 			this.model.onPlay.add( _add );
-			this.mouseChildren = false;
-			this.mouseEnabled = false;
 		}
 		
 		private function _remove():void
 		{
-			this.graphics.clear();
 			this.visible = false;
 		}
 		
@@ -37,17 +43,9 @@ package views {
 			var centerX:Number = this.model.maskCenterX;
 			var centerY:Number = this.model.maskCenterY;
 			
-			this.graphics.clear();
-			this.graphics.beginFill( 0 );
-			if( radius - PulseModel.SPACE_BETW > 0 )
-				this.graphics.drawCircle( centerX, centerY, radius - PulseModel.SPACE_BETW );
-			this.graphics.drawCircle( centerX, centerY, radius );
-			
-		
-			/*var mtx:Matrix = new Matrix();
-			mtx.createGradientBox( radius*2, radius*2, 0, -radius, -radius );
-			this.graphics.beginGradientFill(GradientType.RADIAL, [ 0, 0, 0 ], [ 0, 1, 0 ], [0, 255, 255], mtx);
-			this.graphics.drawCircle( 0, 0, radius );*/
+			this.width = this.height = radius * 2;
+			this.x = centerX - this.width * 0.5;
+			this.y = centerY - this.height * 0.5;
 		}
 	}
 }
