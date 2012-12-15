@@ -33,7 +33,7 @@ package views {
 			this.foreground.mouseChildren = false;
 			this.foreground.mouseEnabled = false;
 						
-			tree = this.foreground.getChildByName( PRE_TREE ) as Sprite;
+			tree = foreground.getChildByName( PRE_TREE ) as Sprite;
 			springBoard = foreground.getChildByName( SPRING_BOARD ) as Sprite;
 			controlBox = foreground.removeChild( foreground.getChildByName( PRE_CONTROL_BOX ) ) as MovieClip;
 			preControlBox = new PreControlBox( controlBox );
@@ -42,11 +42,15 @@ package views {
 			waterFallTwoAnimation = new WaterFallTwo( waterFallTwo );
 			
 			var bitmapForeground:Bitmap = BitmapRenderer.renderSingleBitmap( foreground );			
-			bitmapForeground.x = foreground.x;
-			bitmapForeground.y = foreground.y;
 			this.addChild( bitmapForeground );
 			this.addChild( preControlBox );
 			this.addChild( waterFallTwoAnimation );
+			
+			for( var i:int = 0; i < this.numChildren; i++ )
+			{
+				this.getChildAt( i ).x += foreground.x;
+				this.getChildAt( i ).y += foreground.y;
+			}
 			
 			super( foregroundModel );
 		}
