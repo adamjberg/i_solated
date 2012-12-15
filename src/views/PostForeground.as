@@ -24,14 +24,12 @@ package views {
 		private var pulse:PulseMask;
 		private var taggables:Array = [];
 		private var _keepMask:Boolean = false;
-		private var _addForegroundAsChild:Boolean;
 		
-		public function PostForeground( foreground:Sprite, foregroundModel:ForegroundModel, taggableNames:Array, pulseModel:PulseModel, taggableMasks:Array = null, addForegroundAsChild:Boolean = true ) 
+		public function PostForeground( foreground:Sprite, foregroundModel:ForegroundModel, taggableNames:Array, pulseModel:PulseModel, taggableMasks:Array = null ) 
 		{
 			var object:Taggable;
 			var taggableMask:TaggableMask;
 						
-			_addForegroundAsChild = addForegroundAsChild;
 			taggableNames.forEach( function( name:String, i:int, a:Array ):void
 			{
 				if( taggableMasks )
@@ -42,11 +40,6 @@ package views {
 						taggableMask = null;
 				}
 				var sprite:Sprite = foreground.getChildByName( name ) as Sprite;
-				if( !_addForegroundAsChild )
-				{
-					sprite.x += foreground.x;
-					sprite.y += foreground.y;
-				}
 				object = new Taggable( sprite, name, taggableMask );
 				object.onTag.addOnce( _objectTagged );
 				taggables.push( object );
@@ -60,29 +53,13 @@ package views {
 			this.pulse = new PulseMask( pulseModel );
 			this.foregroundMask = new Sprite();
 			this.addChild( foregroundMask );
+			this.pulse.cacheAsBitmap = true;
 			this.foregroundMask.cacheAsBitmap = true;
-			this.foreground.cacheAsBitmap = true;
 			
-			if( _addForegroundAsChild )
-			{
-				this.addChild( this.foreground );
-				this.foreground.mask = foregroundMask;
-			}
-			else
-			{
-				this.mask = foregroundMask;
-			}
+			this.addChild( this.foreground );
+			this.foreground.mask = foregroundMask;
+			this.foreground.cacheAsBitmap = true;
 			super( foregroundModel );
-		}
-
-		private function _updatePos():void
-		{	
-			if( !stage )
-				return;
-			var rect:Rectangle = this.scrollRect;
-			rect.x = -foregroundModel.x;
-			rect.y = -foregroundModel.y;
-			this.scrollRect = rect;
 		}
 
 		public function destroy():void
@@ -100,19 +77,13 @@ package views {
 
 		public function keepMask():void
 		{
+			this.foregroundMask.cacheAsBitmap = false;
 			this._keepMask = true;
 		}
 
 		public function removeMask():void
 		{
-			if( _addForegroundAsChild )
-			{
-				this.foreground.mask = null;
-			}
-			else
-			{
-				this.mask = null;
-			}
+			this.foreground.mask = null;
 			if( this.contains( foregroundMask ) )
 				this.removeChild( foregroundMask );
 		}
