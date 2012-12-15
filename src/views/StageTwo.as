@@ -97,10 +97,6 @@ package views {
 			var rawPreForeground:Sprite = stageTwo.removeChild( stageTwo.getChildByName( 'preForeground' ) ) as Sprite;
 			var rawPostForeground:Sprite = stageTwo.removeChild( stageTwo.getChildByName( 'postForeground' )  ) as Sprite;
 			
-			preForeground = new PreForegroundTwo( rawPreForeground, this.controller.foregroundModel );
-			preForeground.mouseEnabled = false;
-			postForeground = new PostForegroundTwo( rawPostForeground, this.controller.foregroundModel, this.controller.pulseModel );
-			
 			treeLayerOne = new Sprite();
 			trees = stageTwo.removeChild( stageTwo.getChildByName( 'trees1' ) ) as Sprite;
 			treeLayerTwo = new Sprite();
@@ -169,15 +165,19 @@ package views {
 			frontPostForeground = new FrontPostForegroundTwo( rawPostForeground, this.controller.foregroundModel, this.controller.pulseModel );
 			player = new Player( this.controller.playerModel );
 
+			preForeground = new PreForegroundTwo( rawPreForeground, this.controller.foregroundModel );
+			preForeground.mouseEnabled = false;
+			postForeground = new PostForegroundTwo( rawPostForeground, this.controller.foregroundModel, this.controller.pulseModel );
+
 			this.controller.playerController.onPlayerLanded.add( this.player.endJump );
 				
 			pulse = new Pulse( this.controller.pulseModel );			
 			
 			addChild( preForeground );
 			addChild( postForeground );
+			addChild( player );	
 			addChild( frontPreForeground );
 			addChild( frontPostForeground );
-			addChild( player );	
 			addChild( pulse );
 			
 			this.controller.cameraController.rightWall = RIGHT_WALL;
