@@ -39,20 +39,25 @@ package models {
 		
 		private var _x:Number = 0;
 		public function get x():Number { return _x; }
-		public function set x( x:Number):void { _x = x; onPosChanged.dispatch(); }
+		public function set x( x:Number):void 
+		{ 
+			if( this._x == x )
+				return;
+			this._x = x; 
+			this.onPosChanged.dispatch();
+		}
 		
 		public var relativeYPos:Number = 0;
 		
 		private var _y:Number = 0;
 		public function get y():Number { return _y; }
-		public function set y( y:Number):void { _y = y; onPosChanged.dispatch(); }
-		
-		public var _yOffset:Number = 0;
-		public function set yOffset( y:Number ):void{ if( _yOffset == y ) return; _yOffset = y; onPosChanged.dispatch(); }
-		public function get yOffset():Number{ return _yOffset; }
-		public var _xOffset:Number = 0;
-		public function set xOffset( x:Number ):void{ if( _xOffset == x ) return; _xOffset = x; onPosChanged.dispatch(); }
-		public function get xOffset():Number{ return _xOffset; }
+		public function set y( y:Number):void
+		{ 
+			if( this._y == y )
+				return;
+			this._y = y;
+			this.onPosChanged.dispatch();
+		}
 		
 		public function ForegroundModel( actionPoints:Array )
 		{

@@ -287,14 +287,12 @@ package controllers {
 		{
 			var centerX:Number = _stage.stageWidth * X_STAGE_MULTIPLIER;
 			_playerModel.xOffset = _playerModel.xPos - centerX;
-			_foregroundModel.xOffset = _playerModel.xPos - centerX;
 		}
 		
 		private function _updateYOffsets():void
 		{
 			var centerY:Number = _stage.stageHeight * Y_STAGE_MULTIPLIER;
 			_playerModel.yOffset = _playerModel.yPos - centerY;
-			_foregroundModel.yOffset = _playerModel.yPos - centerY;
 		}		
 	}
 }
