@@ -23,7 +23,7 @@ package core {
 	import flash.ui.Keyboard;
 	import flash.utils.getTimer;
 	
-	[SWF(name="i_solated", width="800", height="600", frameRate="60", backgroundColor="#444444")]
+	[SWF(name="i_solated", width="800", height="600", frameRate="30", backgroundColor="#444444")]
 	public class Main extends Sprite 
 	{
 		private var deltaTime:Number;
