@@ -58,6 +58,7 @@ package views {
 			{
 				layer.scrollRect = new Rectangle( 0, 0, stage.stageWidth, stage.stageHeight );
 			} );
+			this._updateLayers();
 		}
 	}
 }
