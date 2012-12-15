@@ -32,6 +32,8 @@ package views {
 		public var onGateOpened:Signal = new Signal();
 		public var onFinalLogCrack:Signal = new Signal();
 
+		private var frontForeground:Sprite;
+
 		private var dripping:MovieClip;
 		private var drippingAnimation:Dripping;
 		private var hillCog:Sprite;
@@ -46,6 +48,7 @@ package views {
 
 		public function FrontPostForegroundTwo( foreground:Sprite, foregroundModel:ForegroundModel, pulseModel:PulseModel ) 
 		{
+			frontForeground = new Sprite();
 			var waterFallMask:TaggableMask = new TaggableMask( TaggableMask.TOP_LEFT );
 			waterFallMask.graphics.beginFill( 0 );
 			waterFallMask.graphics.drawRect( 0, -70, 800, 600 );
@@ -58,27 +61,41 @@ package views {
 			postBridgeMask.graphics.beginFill( 0 );
 			postBridgeMask.graphics.drawRect( 0, 0, 310, 400 );
 			
-			super( foreground, foregroundModel, [ WATER_FALL, BRIDGE, WATER_WHEEL, STUCK_COG, HILL_COG, DRIPPING ], pulseModel, [ waterFallMask, postBridgeMask ], false );
-			
 			stuckCog = foreground.removeChild( foreground.getChildByName( STUCK_COG ) )as Sprite;
+			stuckCog.cacheAsBitmap = true;
 			hillCog = foreground.removeChild( foreground.getChildByName( HILL_COG ) ) as Sprite;
+			hillCog.cacheAsBitmap = true;
 			
 			postBridge = foreground.removeChild( foreground.getChildByName( BRIDGE ) ) as MovieClip;
-			postBridgeAnimation = new PostBridge( postBridge );
-			
+			postBridge.cacheAsBitmap = true;			
 			waterWheel = foreground.removeChild( foreground.getChildByName( WATER_WHEEL ) ) as MovieClip;
-			waterWheelAnimation = new WaterWheel( waterWheel );
+			waterWheel.cacheAsBitmap = true;
 			waterFall = foreground.removeChild( foreground.getChildByName( WATER_FALL ) ) as MovieClip;
-			waterFallAnimation = new WaterFall( waterFall, true );
+			waterFall.cacheAsBitmap = true;
 			dripping = foreground.removeChild( foreground.getChildByName( DRIPPING ) ) as MovieClip;
+			dripping.cacheAsBitmap = true;
+			
+			frontForeground.x = foreground.x;
+			frontForeground.y = foreground.y;
+			
+			frontForeground.addChild( stuckCog );
+			frontForeground.addChild( hillCog );	
+			frontForeground.addChild( waterWheel );
+			frontForeground.addChild( postBridge );
+			frontForeground.addChild( waterFall );
+			frontForeground.addChild( dripping );
+			
+			super( frontForeground, foregroundModel, [ WATER_FALL, BRIDGE, WATER_WHEEL, STUCK_COG, HILL_COG, DRIPPING ], pulseModel, [ waterFallMask, postBridgeMask ] );			
+			
+			postBridgeAnimation = new PostBridge( postBridge );
+			waterWheelAnimation = new WaterWheel( waterWheel );
+			waterFallAnimation = new WaterFall( waterFall, true );
 			drippingAnimation = new Dripping( dripping );
 			
-			addChild( stuckCog );
-			addChild( hillCog );	
-			addChild( waterWheelAnimation );
-			addChild( postBridgeAnimation );
-			addChild( waterFallAnimation );
-			addChild( drippingAnimation );
+			frontForeground.addChild( waterWheelAnimation );
+			frontForeground.addChild( waterFallAnimation );
+			frontForeground.addChild( drippingAnimation );
+			frontForeground.addChild( postBridgeAnimation );
 			
 			this._addListeners();
 		}
@@ -162,7 +179,7 @@ package views {
 		{
 			this.waterFallAnimation.startWaterFall();
 			this.drippingAnimation.destroy();
-			this.removeChild( drippingAnimation );
+			this.frontForeground.removeChild( drippingAnimation );
 		}
 		
 		public function enableHillCogPickUp():void
@@ -177,7 +194,7 @@ package views {
 			{
 				stuckCog.removeEventListener( MouseEvent.MOUSE_DOWN, _hillCogClicked );
 				SpriteManager.disableMouse( hillCog );
-				removeChild( hillCog );
+				frontForeground.removeChild( hillCog );
 			}
 		}
 		
@@ -187,7 +204,7 @@ package views {
 			{
 				stuckCog.removeEventListener( MouseEvent.MOUSE_DOWN, _stuckCogClicked );
 				SpriteManager.disableMouse( stuckCog );
-				removeChild( stuckCog );
+				frontForeground.removeChild( stuckCog );
 			}
 			waterWheelAnimation.loop();
 		}
