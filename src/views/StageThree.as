@@ -26,9 +26,6 @@ package views {
 		[Embed(source="/../assets/zoopch2p2.swf", symbol="Chapter2P2")]
 		private static const STAGE_THREE:Class;
 		
-		private const Y_OFFSET:Number = 0;
-		private const X_OFFSET:Number = 0;
-		
 		private const FIRST_FLOOR_RIGHT_WALL:Number = -250;
 		private const BUCKET_ROOM_RIGHT_WALL:Number = -200;
 		private const REVEAL_ROOM_RIGHT_WALL:Number = -950;
@@ -65,7 +62,7 @@ package views {
 			elevatorPuzzleController = new ElevatorPuzzleController( ( ( this.controller.foregroundModel ) as StageThreeForeground ).elevatorPuzzleModel );
 			
 			var stageThree:Sprite = new STAGE_THREE();
-			preForeground = new PreForegroundThree( stageThree.removeChild( stageThree.getChildByName( 'preForeground' ) ) as Sprite, X_OFFSET, Y_OFFSET, elevatorPuzzleController.elevatorPuzzleModel, this.bucketConveyorController.bucketConveyorModel );
+			preForeground = new PreForegroundThree( stageThree.removeChild( stageThree.getChildByName( 'preForeground' ) ) as Sprite, elevatorPuzzleController.elevatorPuzzleModel, this.bucketConveyorController.bucketConveyorModel, this.controller.foregroundModel );
 			postForeground = new PostForegroundThree( stageThree.removeChild( stageThree.getChildByName( 'postForeground' )  ) as Sprite, this.controller.foregroundModel, elevatorPuzzleController.elevatorPuzzleModel, this.controller.pulseModel, this.bucketConveyorController.bucketConveyorModel );
 			
 			player = new Player( this.controller.playerModel );
