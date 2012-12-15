@@ -1,17 +1,21 @@
 package views {
 	import models.BucketConveyorModel;
 	import models.ElevatorPuzzleModel;
+	import models.ForegroundModel;
 
 	import org.osflash.signals.Signal;
 
+	import flash.display.Bitmap;
 	import flash.display.MovieClip;
 	import flash.display.Sprite;
 	import flash.events.MouseEvent;
+	
+	import utils.display.BitmapRenderer;
 
 	/**
 	 * @author Adam
 	 */
-	public class PreForegroundThree extends Sprite 
+	public class PreForegroundThree extends Foreground 
 	{
 		public var onBucketEmptyComplete:Signal = new Signal();
 		public var onWaterWeightComplete:Signal = new Signal();
@@ -59,11 +63,10 @@ package views {
 			lift.y = liftSupport.y - liftSupport.height;
 		}
 			
-		public function PreForegroundThree( foreground:Sprite, xOffset:Number, yOffset:Number, elevatorPuzzleModel:ElevatorPuzzleModel, bucketConveyorModel:BucketConveyorModel )
+		public function PreForegroundThree( foreground:Sprite, elevatorPuzzleModel:ElevatorPuzzleModel, bucketConveyorModel:BucketConveyorModel, foregroundModel:ForegroundModel )
 		{
+			super( foregroundModel );
 			this.foreground = foreground;
-			this.foreground.x += xOffset;
-			this.foreground.y += yOffset;
 		
 			this.bucketConveyorModel = bucketConveyorModel;
 			
@@ -73,35 +76,34 @@ package views {
 			
 			bucketConveyor = new BucketConveyor( 55, bucketConveyorModel );
 			bucketConveyor.y = -330;
-			foreground.addChildAt( bucketConveyor, foreground.getChildIndex( chute ) - 1 );
 			
-			farLeftButton = foreground.getChildByName( FAR_LEFT_BUTTON ) as MovieClip;
+			farLeftButton = foreground.removeChild( foreground.getChildByName( FAR_LEFT_BUTTON ) ) as MovieClip;
 			farLeftButton.stop();
 			farLeftButton.buttonMode = true;
 			farLeftButton.mouseChildren = false;
 			
-			leftButton = foreground.getChildByName( LEFT_BUTTON ) as MovieClip;
+			leftButton = foreground.removeChild( foreground.getChildByName( LEFT_BUTTON ) ) as MovieClip;
 			leftButton.stop();
 			leftButton.buttonMode = true;
 			leftButton.mouseChildren = false;
 			
-			rightButton = foreground.getChildByName( RIGHT_BUTTON ) as MovieClip;
+			rightButton = foreground.removeChild( foreground.getChildByName( RIGHT_BUTTON ) ) as MovieClip;
 			rightButton.stop();
 			rightButton.buttonMode = true;
 			rightButton.mouseChildren = false;
 			
-			liftButton = foreground.getChildByName( LIFT_BUTTON ) as MovieClip;
+			liftButton = foreground.removeChild( foreground.getChildByName( LIFT_BUTTON ) ) as MovieClip;
 			liftButton.stop();
 			hideLiftButton();
 			liftButton.mouseChildren = false;
 			liftButton.buttonMode = true;
 			
-			lift = foreground.getChildByName( LIFT ) as Sprite;
+			lift = foreground.removeChild( foreground.getChildByName( LIFT ) ) as Sprite;
 			liftSupport = foreground.getChildByName( LIFT_SUPPORT ) as Sprite;
 			
 			liftHeight = 42.5; 
 			
-			liftControls = foreground.getChildByName( LIFT_CONTROLS ) as Sprite;
+			liftControls = foreground.removeChild( foreground.getChildByName( LIFT_CONTROLS ) ) as Sprite;
 			liftControls.buttonMode = true;
 			liftControls.mouseChildren = false;
 			disableLiftControls();
@@ -109,17 +111,34 @@ package views {
 			valve = foreground.getChildByName( VALVE ) as Sprite;
 			
 			surfIntro = new SurfIntro( this.foreground.removeChild( foreground.getChildByName( SURF_INTRO ) ) as MovieClip );
-			this.foreground.addChild( surfIntro );
 			
-			this.bucketButton = this.foreground.getChildByName( BUCKET_BUTTON ) as MovieClip;
+			this.bucketButton = foreground.removeChild( foreground.getChildByName( BUCKET_BUTTON ) ) as MovieClip;
 			this.bucketButton.stop();
 			this.bucketButton.buttonMode = true;
 			
 			waterWeight = new WaterWeight( this.foreground.removeChild( this.foreground.getChildByName( WATER_WEIGHT ) ) as MovieClip );
 			
-			this.foreground.addChild( waterWeight );
+			var bitmapForeground:Bitmap = BitmapRenderer.renderSingleOffsetBitmap( foreground );			
+			this.addChild( bitmapForeground );
+			this.addChild( liftSupport );
+			this.addChild( lift );
+			this.addChild( waterWeight );
+			this.addChild( surfIntro );
+			this.addChild( chute );
+			this.addChild( leftButton );
+			this.addChild( rightButton );
+			this.addChild( liftButton );
+			this.addChild( liftControls );
+			this.addChild( farLeftButton );
+			this.addChild( bucketConveyor );
+			this.addChild( bucketButton );
 			
-			this.addChild( this.foreground );
+			for( var i:int = 0; i < this.numChildren; i++ )
+			{
+				this.getChildAt( i ).x += foreground.x;
+				this.getChildAt( i ).y += foreground.y;
+			}
+			
 			this._addListeners();
 		}
 		
@@ -177,8 +196,8 @@ package views {
 		
 		public function removeLift():void
 		{
-			this.foreground.removeChild( lift );
-			this.foreground.removeChild( liftSupport );
+			this.removeChild( lift );
+			this.removeChild( liftSupport );
 		}
 		
 		public function removeValve():void
