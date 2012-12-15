@@ -3,16 +3,31 @@ package utils.display {
 	import flash.display.BitmapData;
 	import flash.display.DisplayObject;
 	import flash.geom.Matrix;
+	import flash.geom.Rectangle;
 	/**
 	 * @author Adam
 	 */
 	public class BitmapRenderer
 	{
-		public static function renderSingleBitmap( sprite:DisplayObject, matrix:Matrix = null ):Bitmap
+		public static function renderSingleBitmap( sprite:DisplayObject ):Bitmap
 		{
 			var bd:BitmapData = new BitmapData( sprite.width, sprite.height, true, 0x00000000 );
+			bd.draw( sprite );
+			var bitmap:Bitmap = new Bitmap( bd );
+			return bitmap;
+		}
+		
+		public static function renderSingleOffsetBitmap( sprite:DisplayObject ):Bitmap
+		{
+			var rect:Rectangle = sprite.getBounds( sprite.stage );
+			var matrix:Matrix = new Matrix();
+			matrix.translate( -rect.x, -rect.y );
+			var bd:BitmapData = new BitmapData( sprite.width, sprite.height, true, 0x00000000 );
 			bd.draw( sprite, matrix );
-			return new Bitmap(bd);
+			var bitmap:Bitmap = new Bitmap( bd );
+			bitmap.x = rect.x;
+			bitmap.y = rect.y;
+			return bitmap;
 		}
 		
 		public static function renderMultipleBitmaps( sprite:DisplayObject, bitmapWidth:Number ):Array
