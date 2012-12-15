@@ -21,7 +21,7 @@ package views {
 		
 		public function FrontPreForegroundTwo( foreground:Sprite, foregroundModel:ForegroundModel ) 
 		{
-			bridge = foreground.getChildByName( BRIDGE ) as Sprite;
+			bridge = foreground.removeChild( foreground.getChildByName( BRIDGE ) ) as Sprite;
 			waterFall = foreground.removeChild( foreground.getChildByName( WATER_FALL ) ) as MovieClip;
 			waterFallAnimation = new WaterFall( waterFall );
 			waterWheel = foreground.removeChild( foreground.getChildByName( WATER_WHEEL ) ) as MovieClip;
@@ -34,7 +34,7 @@ package views {
 				object.x += foreground.x;
 				object.y += foreground.y;
 			});
-						
+	
 			addChild( bridge );
 			addChild( waterFallAnimation );
 			addChild( waterWheelAnimation );
