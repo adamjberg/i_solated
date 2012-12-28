@@ -38,6 +38,7 @@ package views {
 		
 		public function playFallingPiece():void
 		{
+			SoundManager.getInstance().playSound( Sounds.BRIDGE_PIECE_FALL );
 			this.currentFrame = 1;
 			this.setAnimationTimes( [ BRIDGE_PIECE_FALL_END ], [ ( BRIDGE_PIECE_FALL_END - currentFrame ) / FPS ] );
 		}
