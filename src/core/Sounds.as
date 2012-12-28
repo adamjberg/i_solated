@@ -47,6 +47,7 @@ package core {
 		public static const PLACE_COG:String = 'placeCog';
 		public static const PICK_UP_ROCK:String = 'pickUpRock';
 		public static const BRIDGE_BREAK:String = 'brideBreak';
+		public static const BRIDGE_PIECE_FALL:String = 'bridgePieceFall';
 		public static const GATE_LIFTING:String = 'gateLifting';
 		public static const PLACE_ROCK:String = 'placeRock';
 		public static const BUCKET_MOVEMENT:String = 'bucketMovement';
@@ -264,6 +265,7 @@ package core {
 			soundManager.addExternalSound( FILE_LOC + 'Ch.2CogPlacement.mp3', PLACE_COG );
 			soundManager.addExternalSound( FILE_LOC + 'Ch.2RockPickup.mp3', PICK_UP_ROCK );
 			soundManager.addExternalSound( FILE_LOC + 'BridgeBreakWithPing.mp3', BRIDGE_BREAK );
+			soundManager.addExternalSound( FILE_LOC + 'BridgePreBreakBounce.mp3', BRIDGE_PIECE_FALL );
 			soundManager.addExternalSound( FILE_LOC + 'Ch.2GateLifting.mp3', GATE_LIFTING );
 			soundManager.addExternalSound( FILE_LOC + 'Ch.2RockPlacement.mp3', PLACE_ROCK );
 			soundManager.addExternalSound( FILE_LOC + 'WoodFootSteps.mp3', WOOD_WALKING );				
