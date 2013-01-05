@@ -70,7 +70,6 @@ package core {
 			deltaTime = 0.0;
 			lastTime = getTimer();
 			stage.addEventListener(Event.ENTER_FRAME, enterFrame, false, 0, true );
-			stage.addEventListener( KeyboardEvent.KEY_DOWN, this._keyDown );
 		}
 		
 		private function _showMainMenu():void
@@ -103,12 +102,6 @@ package core {
 			deltaTime = getTimer() - lastTime;
 		    lastTime += deltaTime;
 			ScreenManager.update( deltaTime * 0.001 );
-		}
-		
-		private function _keyDown( e:KeyboardEvent ):void
-		{
-			if( e.keyCode == Keyboard.RIGHT )
-				this._nextStage();
 		}
 	}
 }
