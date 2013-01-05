@@ -509,10 +509,10 @@ package controllers {
 			if( si.crossFade )
 			{
 				var si2:SoundItem = (_soundsDict[ $name + LOOP_SUFFIX ] as SoundItem);
-				si2.fade($targVolume, $fadeLength, fadeDelay, $stopOnComplete);
+				si2.fade( $targVolume, $fadeLength, fadeDelay, $stopOnComplete, null, removeListeners );
 			}
 			si.addEventListener(SoundManagerEvent.SOUND_ITEM_FADE_COMPLETE, handleFadeComplete);
-			si.fade($targVolume, $fadeLength, fadeDelay, $stopOnComplete, null, removeListeners );
+			si.fade( $targVolume, $fadeLength, fadeDelay, $stopOnComplete, null, removeListeners );
 			
 			dispatchEvent(new SoundManagerEvent(SoundManagerEvent.SOUND_ITEM_FADE, si));
 		}
@@ -682,6 +682,7 @@ package controllers {
 		 */
 		private function onSoundLoadError($evt:IOErrorEvent):void
 		{
+			trace( 'ERROR LOADING SOUND!!!' );
 			_tempExternalSoundItem = null;
 			
 			dispatchEvent(new SoundManagerEvent(SoundManagerEvent.SOUND_ITEM_LOAD_ERROR));
