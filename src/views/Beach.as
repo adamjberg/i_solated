@@ -1,13 +1,10 @@
 package views {
 	import controllers.LevelController;
 	import controllers.SoundManager;
-
+	import core.SoundItem;
 	import core.Sounds;
-
 	import com.greensock.TweenLite;
-
 	import org.osflash.signals.Signal;
-
 	import flash.display.Sprite;
 	import flash.geom.Point;
 
@@ -16,6 +13,8 @@ package views {
 	 */
 	public class Beach extends Sprite implements IScreen 
 	{
+		private static const WAVE_FADE_LENGTH:Number = 1.483;
+		
 		[Embed(source="/../assets/zoopch3.swf", symbol="FRAME5")]
 		private const BEACH:Class;
 		
@@ -23,7 +22,6 @@ package views {
 		
 		private var beach:Sprite;
 		private var controller:LevelController;
-		private var foreground:Foreground;
 		private var background:Background;
 		
 		private var finalWalk:FinalWalk;
@@ -107,6 +105,19 @@ package views {
 			
 			_listenForClick();
 			this.controller.cameraController.rightWall = 50;
+			this._startWaveSound();
+		}
+
+		private function _startWaveSound():void
+		{
+			var si:SoundItem = SoundManager.getInstance().getSoundItem( Sounds.WAVES_START );
+			si.play();
+			si.fade( 1, si.sound.length * 0.001 - WAVE_FADE_LENGTH );
+			si.onFadeComplete.addOnce( function( si:SoundItem ):void
+			{
+				si.fade( 0, WAVE_FADE_LENGTH );
+				SoundManager.getInstance().createLoopCrossFade( Sounds.WAVES, WAVE_FADE_LENGTH, WAVE_FADE_LENGTH );
+			});
 		}
 
 		private function _takeStep():void
