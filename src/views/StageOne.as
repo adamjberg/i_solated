@@ -18,7 +18,9 @@ package views {
 	 * @author Adam
 	 */
 	public class StageOne extends Sprite implements IScreen 
-	{				
+	{
+		private static const BGM_VOL:Number = 0.5;
+				
 		[Embed(source="/../assets/ZOOPCH1.swf", symbol="Chapter1")]
 		private static const STAGE_ONE:Class;
 		
@@ -280,7 +282,7 @@ package views {
 		{
 			const fadeOutTime:Number = 1.5;
 			var si:SoundItem = SoundManager.getInstance().getSoundItem( Sounds.BGM_START_CH1 );
-			SoundManager.getInstance().playSound( Sounds.BGM_START_CH1, 0.5 );
+			SoundManager.getInstance().playSound( Sounds.BGM_START_CH1, BGM_VOL );
 			TweenLite.delayedCall( ( si.sound.length * 0.001 ) - fadeOutTime, _startBGMLoop );
 			si.fade( 0, fadeOutTime, ( si.sound.length * 0.001 ) - fadeOutTime, true );
 		}
@@ -290,7 +292,7 @@ package views {
 			const fadeTime:Number = 1.5;
 			var si:SoundItem = SoundManager.getInstance().getSoundItem( Sounds.BGM_LOOP_CH1 );
 			
-			SoundManager.getInstance().createLoopCrossFade( Sounds.BGM_LOOP_CH1, fadeTime, fadeTime, si.baseVolume );
+			SoundManager.getInstance().createLoopCrossFade( Sounds.BGM_LOOP_CH1, fadeTime, fadeTime, BGM_VOL );
 		}
 		
 		private function _fadeOutMusic():void
