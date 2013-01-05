@@ -28,6 +28,8 @@ package core {
 		public static const START_JUMP:String = 'Start Jump';
 		public static const PULSE:String = 'Pulse';
 		public static const WIND:String = 'Wind';
+		public static const WAVES_START:String = 'WavesStart';
+		public static const WAVES:String = 'Waves';
 		public static const SMALL_LANDING:String = ' Small landing';
 		public static const CLIFF_WALKING:String = 'Cliff Walking';
 		public static const FACTORY_WALKING:String = 'Factory Walking';
@@ -108,7 +110,7 @@ package core {
 		
 		private static var finalJourneySounds:Array =
 		[
-			SAND_FOOTSTEPS, BGM_CH3
+			SAND_FOOTSTEPS, WAVES_START, WAVES
 		];
 		
 		private static const timeLapseSounds:Array = [ TIME_LAPSE ];
@@ -306,6 +308,8 @@ package core {
 		private static function addFinalJourneySounds():void
 		{
 			soundManager.addExternalSound( FILE_LOC + 'DragginInSand(Better).mp3', SAND_FOOTSTEPS );
+			soundManager.addExternalSound( FILE_LOC + 'WavesLoop.mp3', WAVES );
+			soundManager.addExternalSound( FILE_LOC + 'WavesStart.mp3', WAVES_START );
 		}
 		
 		private static function addTimeLapseSounds():void
