@@ -1,0 +1,16 @@
+com.powerflasher.fdt.core.CompatiblePlayers=External_SWF_Viewer\:Standalone_Flash_Player\:SWF_Plugin_Viewer
+com.powerflasher.fdt.core.CompilerArguments=-static-link-runtime-shared-libraries\=true\n-target-player\={playerVersion}\n-library-path+\="{flexSDK}/frameworks/locale/en_US"\n-default-size\=800,600
+com.powerflasher.fdt.core.DefaultOutputFolder=bin
+com.powerflasher.fdt.core.DefaultPlayer=SWF_Plugin_Viewer
+com.powerflasher.fdt.core.Language=AS3
+com.powerflasher.fdt.core.PassClasspath=true
+com.powerflasher.fdt.core.PassExterns=false
+com.powerflasher.fdt.core.PassMainclass=true
+com.powerflasher.fdt.core.PassRsls=false
+com.powerflasher.fdt.core.PassSwcs=true
+com.powerflasher.fdt.core.PlatformType=FDT
+com.powerflasher.fdt.core.PlayerVersion=11.1
+com.powerflasher.fdt.core.ProjectTypeHint=FDT Plugin
+com.powerflasher.fdt.core.Runtime=Flash_Player
+com.powerflasher.fdt.core.SdkName=Flex 4.6.0
+eclipse.preferences.version=1
