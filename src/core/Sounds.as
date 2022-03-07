@@ -13,7 +13,7 @@ package core {
 	{
 		public static var onInitialSoundsLoaded:Signal = new Signal();
 		
-		private static const WEB:Boolean = true;
+		private static const WEB:Boolean = false;
 		private static const FILE_LOC:String = WEB ? "http://www.catharticgames.com/games/i_solated/assets/Sounds/" : "../assets/Sounds/";
 		
 		public static const BGM_START_CH1:String = 'BGMStartCh1';
